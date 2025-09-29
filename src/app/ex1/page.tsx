@@ -1,34 +1,8 @@
-function Panel({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="panel p-4">
-      <h3 className="mb-3 font-semibold">{title}</h3>
-      {children}
-    </div>
-  );
-}
+import LeftPanel from "../_components/LeftPanel";
+import EditorPanel from "../_components/EditorPanel";
+import RightChat from "../_components/RightChat";
 
-export default function Ex1Page() {
-  return (
-    <>
-      <aside className="space-y-3">
-        <Panel title="Énoncé">
-          <p className="text-sm">
-            Classe Person : Attributs 1. Complétez la classe Person avec les attributs privés suivants...
-          </p>
-          <ul className="text-sm list-disc pl-5">
-            <li>firstname: string</li>
-            <li>lastname: string</li>
-            <li>birthdate: DateTime</li>
-            <li>sex: char</li>
-            <li>address: string</li>
-            <li>phone: string</li>
-          </ul>
-        </Panel>
-      </aside>
-      <section className="lg:col-span-2 space-y-3">
-        <Panel title="Snippets">
-          <pre className="text-xs bg-neutral-50 border rounded p-3 overflow-auto whitespace-pre">
-            {`using System;
+const codeSample = `using System;
 
 public class Person
 {
@@ -38,17 +12,30 @@ public class Person
     private char sex;
     private string address;
     private string phone;
-}`}
-          </pre>
-          <button className="mt-3 inline-flex items-center rounded bg-[#3f6f0d] px-3 py-1 text-white text-xs">Exécuter</button>
-        </Panel>
-      </section>
-      <aside className="space-y-3">
-        <Panel title="Chat Enseignant">
-          <div className="text-sm text-neutral-600">Tapez votre message…</div>
-        </Panel>
-      </aside>
-    </>
+}`;
+
+export default function Ex1Page() {
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-[320px_minmax(0,1fr)_320px] gap-4 items-start">
+      <LeftPanel>
+        <p>
+          Classe Person : Attributs 1. Complétez la classe Person avec les attributs privés suivants :
+          Attention l’ordre et l’orthographe des attributs sont à respecter.
+        </p>
+        <ul className="list-disc pl-5 mt-2">
+          <li>firstname, de type string</li>
+          <li>lastname, de type string</li>
+          <li>birthdate, de type DateTime</li>
+          <li>sex, de type char</li>
+          <li>address, de type string</li>
+          <li>phone, de type string</li>
+        </ul>
+      </LeftPanel>
+
+      <EditorPanel code={codeSample} />
+
+      <RightChat />
+    </div>
   );
 }
 
