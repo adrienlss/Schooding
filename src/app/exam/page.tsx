@@ -6,7 +6,7 @@ export default function ExamPage() {
   return (
     <div style={{ height: '100vh', width: '100%', padding: 0, margin: 0 }}>
       <iframe
-        src="/exam2.html"
+        src="/exam-mock.html"
         title="Exam"
         style={{ border: 'none', width: '100%', height: '100%' }}
       />
