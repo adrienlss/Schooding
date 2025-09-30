@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-export default function ExamPage(): JSX.Element {
+export default function ExamPage() {
   return (
     <div style={{ height: '100vh', width: '100%', padding: 0, margin: 0 }}>
       <iframe
