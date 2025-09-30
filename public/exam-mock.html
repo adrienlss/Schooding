@@ -44,9 +44,10 @@
       .header-inner {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 16px;
         width: 100%;
-        padding: 8px 16px;
+        padding: 8px 24px;
       }
       .tabs {
         display: flex;
@@ -99,6 +100,7 @@
         grid-template-columns: 300px minmax(0, 1fr) 360px; /* gauche / centre / droite */
         gap: 12px;
         align-items: start;
+        min-width: 1280px;
       }
 
       /* Colonne gauche: pilule bleue + carte énoncé + bouton exécuter */
@@ -121,7 +123,7 @@
       .panel .panel-head {
         background: var(--blue-rail);
         color: #fff;
-        padding: 10px 14px;
+        padding: 0 16px;
         height: 44px;
         display:flex; align-items:center; justify-content:space-between;
         font-weight: 700;
@@ -135,7 +137,7 @@
       .panel li { margin: 6px 0; }
 
       /* Éditeur */
-      .editor-card { height: calc(100vh - 84px); display: flex; flex-direction: column; min-width: 0; }
+      .editor-card { height: calc(100vh - 84px); display: flex; flex-direction: column; min-width: 0; position: relative; }
       .editor-toolbar {
         background: var(--bg);
         border-bottom: 1px solid var(--gutter);
@@ -192,6 +194,7 @@
       }
       .editor-bottom { height: 44px; background: var(--bg); border-top:1px solid var(--gutter); }
       .execute {
+        position: absolute; left: 12px; bottom: 12px;
         background: var(--blue);
         color: #fff;
         border: none;
@@ -200,7 +203,7 @@
         font-weight: 700;
         box-shadow: 0 4px 14px rgba(23,120,242,0.25);
         cursor: pointer;
-        display:inline-flex; align-items:center; gap:8px;
+        display:inline-flex; align-items:center; gap:8px; z-index: 2;
       }
 
       /* Chat enseignant */
@@ -282,13 +285,13 @@
               <p style="color: var(--muted); margin: 0 0 8px;">Ecrire la méthode qui consiste à traduire une matrice en un tableau (ou vecteur) et retourner le tableau (ou vecteur) résultant</p>
               <code style="display:block; background:#fafbfc; border:1px solid #eef2f6; padding:8px 10px; border-radius:6px;">int[] Matrice_Vecteur(int[,] mat)</code>
               <p style="color: var(--muted);">Attention à tester les cas aux limites</p>
-              <div class="title" style="font-weight:600;">Exemple :</div>
+              <div class="title" style="font-weight:600;">Exemple : <span class="hl" style="padding:2px 4px; border-radius:2px;"> </span></div>
               <p style="color: var(--muted);">soit mat la matrice {{1,2,3},{4,5,6}, {7,8,9}}, le résultat est le suivant :<br/>{1,2,3,4,5,6,7,8,9}</p>
-              <p style="font-weight:600; margin-top: 14px;"><span class="hl">Pas de Main, ni d'affichage</span></p>
+              <p style="font-weight:600; margin-top: 14px;"> <span class="hl" style="padding:2px 4px; border-radius:2px;">Pas de Main, ni d'affichage</span></p>
             </div>
           </div>
         </div>
-        <button class="execute" style="justify-self:start;">▶️ Exécuter</button>
+        <!-- Bouton Exécuter déplacé dans la zone éditeur (colonne centrale) -->
       </section>
           <div class="panel-body">
             <div class="title">Transformation Matrice vers Vecteur</div>
@@ -320,6 +323,7 @@
           <div class="code" id="code" contenteditable="true" spellcheck="false"></div>
         </div>
         <div class="editor-bottom"></div>
+        <button class="execute">▶️ Exécuter</button>
       </section>
 
       <!-- Chat enseignant -->
