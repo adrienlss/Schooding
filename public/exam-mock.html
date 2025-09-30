@@ -95,6 +95,13 @@
         gap: 12px;
         align-items: start;
       }
+      /* Colonne gauche verte + carte énoncé empilées */
+      .left-col { display: grid; gap: 14px; align-content: start; }
+      .left-rail { background: var(--green); color:#fff; border-radius: 8px; padding:12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+      .left-rail .rail-title{ display:inline-block; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.35); border-radius:8px; padding:8px 10px; font-weight:800; margin-bottom:10px; }
+      .rail-ex-list{ display:grid; gap:8px; }
+      .ex-btn{ display:flex; align-items:center; gap:8px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.35); color:#fff; border-radius:8px; padding:6px 10px; font-weight:700; }
+      .timer-box{ text-align:center; font-weight:800; margin:16px 0 4px; }
 
       /* Bloc Énoncé */
       .panel {
@@ -246,17 +253,36 @@
 
     <!-- Main layout -->
     <main class="layout">
-      <!-- Énoncé -->
-      <section class="panel">
-        <div class="panel-head">Énoncé</div>
-        <div class="panel-body">
-          <div class="title">Transformation Matrice vers Vecteur</div>
-          <p style="color: var(--muted); margin: 0 0 8px;">Écrire la méthode qui consiste à traduire une matrice en un tableau (ou vecteur) et retourner le tableau (ou vecteur) résultant</p>
-          <code style="display:block; background:#fafbfc; border:1px solid #eef2f6; padding:8px 10px; border-radius:6px;">int[] Matrice_Vecteur(int[,] mat)</code>
-          <p style="color: var(--muted);">Attention à tester les cas aux limites</p>
-          <div class="title" style="font-weight:600;">Exemple : <span class="hl"> </span></div>
-          <p style="color: var(--muted);">soit mat la matrice {{1,2,3},{4,5,6},{7,8,9}}, le résultat est le suivant : {1,2,3,4,5,6,7,8,9}</p>
-          <p style="font-weight:600; margin-top: 14px;"><span class="hl">Pas de Main, ni d'affichage</span></p>
+      <!-- Colonne gauche = rail + énoncé -->
+      <section class="left-col">
+        <div class="left-rail">
+          <div class="rail-title">Instructions et Aide</div>
+          <div class="rail-ex-list">
+            <div class="ex-btn">Ex 1 <span class="badge">1pts</span></div>
+            <div class="ex-btn">Ex 2 <span class="badge">1pts</span></div>
+            <div class="ex-btn">Ex 3 <span class="badge">1pts</span></div>
+            <div class="ex-btn">Ex 4 <span class="badge">1pts</span></div>
+            <div class="ex-btn">Ex 5 <span class="badge">1pts</span></div>
+            <div class="ex-btn">Ex 6 <span class="badge">1pts</span></div>
+            <div class="ex-btn">Ex 7 <span class="badge">1pts</span></div>
+            <div class="ex-btn">Ex 8 <span class="badge">1pts</span></div>
+            <div class="ex-btn">Ex 9 <span class="badge">1pts</span></div>
+            <div class="ex-btn">Ex 10 <span class="badge">1pts</span></div>
+            <div class="ex-btn">Ex 11 <span class="badge">1pts</span></div>
+          </div>
+          <div class="timer-box">Adrien Lassus* — Termine dans : 1h 54m</div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">Énoncé</div>
+          <div class="panel-body">
+            <div class="title">Transformation Matrice vers Vecteur</div>
+            <p style="color: var(--muted); margin: 0 0 8px;">Écrire la méthode qui consiste à traduire une matrice en un tableau (ou vecteur) et retourner le tableau (ou vecteur) résultant</p>
+            <code style="display:block; background:#fafbfc; border:1px solid #eef2f6; padding:8px 10px; border-radius:6px;">int[] Matrice_Vecteur(int[,] mat)</code>
+            <p style="color: var(--muted);">Attention à tester les cas aux limites</p>
+            <div class="title" style="font-weight:600;">Exemple : <span class="hl"> </span></div>
+            <p style="color: var(--muted);">soit mat la matrice {{1,2,3},{4,5,6},{7,8,9}}, le résultat est le suivant : {1,2,3,4,5,6,7,8,9}</p>
+            <p style="font-weight:600; margin-top: 14px;"><span class="hl">Pas de Main, ni d'affichage</span></p>
+          </div>
         </div>
       </section>
 
