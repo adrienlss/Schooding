@@ -50,8 +50,11 @@
         display: flex;
         gap: 8px;
         align-items: center;
-        flex-wrap: wrap;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
       }
+      .tabs::-webkit-scrollbar{ display:none }
       .tab {
         background: rgba(255,255,255,0.08);
         border: 1px solid rgba(255,255,255,0.25);
@@ -84,12 +87,12 @@
 
       /* Layout 3 colonnes */
       .layout {
-        max-width: 1400px;
-        margin: 16px auto;
-        padding: 0 16px 16px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 12px 12px 16px;
         display: grid;
         grid-template-columns: 280px minmax(0, 1fr) 360px; /* gauche / centre / droite */
-        gap: 16px;
+        gap: 12px;
         align-items: start;
       }
 
@@ -101,7 +104,7 @@
         overflow: hidden;
       }
       .panel .panel-head {
-        background: #1881ff; /* bleu bandeau */
+        background: #1476ff; /* bleu plus vif */
         color: #fff;
         padding: 10px 14px;
         font-weight: 700;
@@ -115,7 +118,7 @@
       .panel li { margin: 6px 0; }
 
       /* Éditeur */
-      .editor-card { height: calc(100vh - 140px); display: flex; flex-direction: column; }
+      .editor-card { height: calc(100vh - 170px); display: flex; flex-direction: column; }
       .editor-toolbar {
         background: #f0f2f5;
         border-bottom: 1px solid #e1e4ea;
