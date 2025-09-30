@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Instructions et Aide - Mock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root { --green:#2a7e1f; --green-hover:#39a52a; --badge:#1e6915; --bg:#fff; --muted:#333; }
+      *{ box-sizing:border-box }
+      body{ margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#111; background:#fff; }
+      .header{ position:sticky; top:0; z-index:10; background:var(--green); color:#fff; }
+      .header-inner{ max-width:1200px; margin:0 auto; padding:10px 16px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:12px; }
+      .tabs{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+      .tab{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.25); color:#fff; padding:6px 10px; border-radius:6px; font-weight:700; display:inline-flex; align-items:center; gap:8px; }
+      .badge{ background:#1e6915; padding:2px 6px; border-radius:999px; font-size:12px; font-weight:700; }
+      .status{ font-weight:700; }
+      .container{ max-width:1100px; margin:18px auto; padding:0 16px 48px; }
+      h1{ font-size:36px; margin:22px 0 12px; }
+      ul{ margin:12px 0 22px 22px; color:#222; line-height:1.7; }
+      .alert{ background:#f8d7da; color:#7b1c23; border:1px solid #f1b4bb; padding:14px 16px; border-radius:6px; font-weight:700; }
+      .faq h2{ margin-top:36px; font-size:28px; }
+      .faq .q{ margin:16px 0 6px; font-weight:700; }
+      .faq .a{ color:#444; }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <div class="tabs">
+          <div class="tab">Instructions et Aide</div>
+          <div class="tab">Ex 1 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 2 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 3 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 4 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 5 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 6 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 7 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 8 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 9 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 10 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 11 <span class="badge">1pts</span></div>
+        </div>
+        <div class="status">Adrien Lassus* — Termine dans : 1h 46m</div>
+      </div>
+    </header>
+    <div class="container">
+      <h1>Instructions Générales</h1>
+      <ul>
+        <li>d'ouvrir d'autres onglets</li>
+        <li>de sortir de la fenêtre d'examen (n'allez pas sur d'autres sites/programmes).</li>
+        <li>de s'aider de vos camarades</li>
+        <li>d'utiliser votre portable (il doit être éteint)</li>
+        <li>de copier des ressources extérieures à l'examen, y compris vos anciens exercices</li>
+      </ul>
+      <div class="alert">Tout manquement à ces règles peut entraîner des sanctions allant jusqu'au conseil de discipline.</div>
+      <section class="faq">
+        <h2>Aide</h2>
+        <div class="a">Vous êtes actuellement connecté en tant que <b>Adrien Lassus*</b>.</div>
+        <div class="q">F.A.Q.</div>
+        <div class="q">Question : Puis-je soumettre/tester plusieurs fois un exercice ?</div>
+        <div class="a">Vous pouvez le faire autant de fois que vous voulez, avec 10 secondes entre chaque essai.</div>
+        <div class="q">Question : J'ai fini de répondre aux exercices, puis-je quitter Schooding ?</div>
+        <div class="a">Oui, vérifiez avoir soumis chaque exercice.</div>
+      </section>
+    </div>
+  </body>
+  </html>
+
+
