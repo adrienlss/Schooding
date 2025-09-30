@@ -9,15 +9,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
       :root {
-        --green: #2a7e1f; /* bandeau et entêtes */
-        --green-hover: #39a52a; /* hover onglets */
-        --badge: #1e6915;
-        --blue: #1778f2; /* bouton exécuter */
-        --bg: #f5f6f8;
+        --green: #2a7e1f; /* barre onglets et entêtes */
+        --green-hover: #349224;
+        --badge: rgba(0,0,0,.25);
+        --blue: #1677ff; /* bouton exécuter */
+        --bg: #f3f4f6; /* fond global */
         --card: #ffffff;
-        --text: #222;
-        --muted: #555;
-        --gutter: #e9edf3;
+        --text: #111827; /* textes forts */
+        --muted: #6b7280; /* textes secondaires */
+        --gutter: #e5e7eb; /* bordures claires */
+        --shadow: 0 1px 2px rgba(0,0,0,.06), 0 4px 10px rgba(0,0,0,.08);
+        --blue-rail: #1e88e5; /* bandeaux bleus Énoncé */
+        --danger: #ef4444; /* bouton disquette rouge */
       }
 
       html, body {
@@ -35,6 +38,7 @@
         z-index: 50;
         background: var(--green);
         color: #fff;
+        height: 60px;
         box-shadow: 0 2px 0 rgba(0,0,0,0.08);
       }
       .header-inner {
@@ -42,9 +46,8 @@
         grid-template-columns: 1fr auto;
         align-items: center;
         gap: 16px;
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 10px 16px;
+        width: 100%;
+        padding: 8px 16px;
       }
       .tabs {
         display: flex;
@@ -59,15 +62,16 @@
         background: rgba(255,255,255,0.08);
         border: 1px solid rgba(255,255,255,0.25);
         color: #fff;
-        padding: 6px 10px;
+        padding: 8px 14px;
         border-radius: 6px;
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        font-weight: 600;
+        font-weight: 700;
         line-height: 1;
         cursor: pointer;
         user-select: none;
+        font-size: 14px;
       }
       .tab:hover { background: var(--green-hover); border-color: transparent; }
       .badge {
@@ -83,25 +87,29 @@
         display: flex;
         align-items: center;
         gap: 12px;
+        padding-right: 24px;
       }
 
       /* Layout 3 colonnes */
       .layout {
         width: 100%;
         margin: 0 auto;
-        padding: 12px 12px 16px;
+        padding: 12px 16px 16px;
         display: grid;
-        grid-template-columns: 280px minmax(0, 1fr) 360px; /* gauche / centre / droite */
+        grid-template-columns: 300px minmax(0, 1fr) 360px; /* gauche / centre / droite */
         gap: 12px;
         align-items: start;
       }
-      /* Colonne gauche verte + carte énoncé empilées */
-      .left-col { display: grid; gap: 14px; align-content: start; }
-      .left-rail { background: var(--green); color:#fff; border-radius: 8px; padding:12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-      .left-rail .rail-title{ display:inline-block; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.35); border-radius:8px; padding:8px 10px; font-weight:800; margin-bottom:10px; }
-      .rail-ex-list{ display:grid; gap:8px; }
-      .ex-btn{ display:flex; align-items:center; gap:8px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.35); color:#fff; border-radius:8px; padding:6px 10px; font-weight:700; }
-      .timer-box{ text-align:center; font-weight:800; margin:16px 0 4px; }
+
+      /* Colonne gauche: pilule bleue + carte énoncé + bouton exécuter */
+      .left-col { display: grid; gap: 12px; align-content: start; position: relative; }
+      .enonce-wrapper { position: relative; }
+      .enonce-pill {
+        position: absolute; left: -36px; top: 12px; width: 36px; height: 74px;
+        background: var(--blue-rail); color:#fff; border-radius: 16px; display:grid; place-items:center;
+        box-shadow: var(--shadow);
+      }
+      .enonce-pill span{ writing-mode: vertical-rl; transform: rotate(180deg); font-weight:800; letter-spacing:.5px; }
 
       /* Bloc Énoncé */
       .panel {
@@ -111,9 +119,11 @@
         overflow: hidden;
       }
       .panel .panel-head {
-        background: #1476ff; /* bleu plus vif */
+        background: var(--blue-rail);
         color: #fff;
         padding: 10px 14px;
+        height: 44px;
+        display:flex; align-items:center; justify-content:space-between;
         font-weight: 700;
       }
       .panel .panel-body {
@@ -125,68 +135,70 @@
       .panel li { margin: 6px 0; }
 
       /* Éditeur */
-      .editor-card { height: calc(100vh - 170px); display: flex; flex-direction: column; }
+      .editor-card { height: calc(100vh - 84px); display: flex; flex-direction: column; }
       .editor-toolbar {
-        background: #f0f2f5;
-        border-bottom: 1px solid #e1e4ea;
-        padding: 8px;
+        background: var(--bg);
+        border-bottom: 1px solid var(--gutter);
+        padding: 8px 12px;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
       }
       .btn {
         background: #fff;
-        border: 1px solid #d7dce3;
+        border: 1px solid var(--gutter);
         color: var(--text);
-        padding: 6px 10px;
-        border-radius: 6px;
+        padding: 8px 12px;
+        border-radius: 8px;
         font-weight: 600;
         cursor: pointer;
       }
       .btn-ghost { background: transparent; color: #2b2f36; }
-      .btn-danger { background: #e14949; border-color: #d13e3e; color: #fff; }
-      .btn-square { width: 32px; height: 32px; display: grid; place-items: center; padding: 0; }
-      .select { height: 32px; border: 1px solid #d7dce3; border-radius: 6px; padding: 0 8px; background: #fff; }
+      .btn-danger { background: var(--danger); border-color: #dc2626; color: #fff; }
+      .btn-square { width: 36px; height: 36px; display: grid; place-items: center; padding: 0; border-radius:8px; }
+      .btn-cyan { background:#e0f2fe; color:#0ea5e9; border-color:#bae6fd; }
+      .select { height: 36px; border: 1px solid var(--gutter); border-radius: 8px; padding: 0 10px; background: #fff; }
 
       .editor-area {
         position: relative;
         flex: 1;
         background: #fff;
         display: grid;
-        grid-template-columns: 52px 1fr; /* gouttière + code */
+        grid-template-columns: 40px 1fr; /* gouttière + code */
+        border-left: 1px solid var(--gutter);
+        border-right: 1px solid var(--gutter);
       }
       .gutter {
-        background: #fbfcfe;
+        background: #fafafa;
         border-right: 1px solid var(--gutter);
         color: #9aa3af;
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        font-size: 13px;
+        font-size: 14px;
         padding: 12px 8px;
-        line-height: 22px;
+        line-height: 1.5;
         counter-reset: line 0;
       }
       .gutter div { counter-increment: line; }
       .gutter div::before { content: counter(line); display: block; text-align: right; }
       .code {
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        font-size: 13px;
+        font-size: 14px;
         padding: 12px 12px;
-        line-height: 22px;
+        line-height: 1.5;
         white-space: pre;
         overflow: auto;
       }
+      .editor-bottom { height: 44px; background: var(--bg); border-top:1px solid var(--gutter); }
       .execute {
-        position: absolute;
-        bottom: 12px;
-        left: 12px;
         background: var(--blue);
         color: #fff;
         border: none;
         border-radius: 8px;
-        padding: 10px 14px;
+        padding: 8px 14px;
         font-weight: 700;
         box-shadow: 0 4px 14px rgba(23,120,242,0.25);
         cursor: pointer;
+        display:inline-flex; align-items:center; gap:8px;
       }
 
       /* Chat enseignant */
@@ -199,13 +211,13 @@
         align-items: center;
         gap: 8px;
       }
-      .chat-body { height: calc(100vh - 250px); overflow: auto; padding: 12px; }
+      .chat-body { height: calc(100vh - 260px); overflow: auto; padding: 12px; }
       .chat-footer {
-        border-top: 1px solid #e1e4ea;
-        background: #f5f6f8;
+        border-top: 1px solid var(--gutter);
+        background: var(--bg);
         padding: 10px;
         display: grid;
-        grid-template-columns: 1fr 40px;
+        grid-template-columns: 1fr 44px;
         gap: 10px;
         align-items: center;
       }
@@ -214,9 +226,10 @@
         gap: 6px;
         margin-bottom: 8px;
       }
-      .tool { background: #fff; border: 1px solid #d7dce3; width: 32px; height: 32px; border-radius: 6px; display: grid; place-items: center; cursor: pointer; }
+      .tool { background: #fff; border: 1px solid var(--gutter); width: 32px; height: 32px; border-radius: 6px; display: grid; place-items: center; cursor: pointer; }
       .input { background: #fff; border: 1px solid #d7dce3; border-radius: 8px; padding: 10px 12px; }
       .send { background: #0d6efd; color: #fff; border: none; border-radius: 10px; height: 40px; display: grid; place-items: center; cursor: pointer; }
+      .drawer { background:#0d6efd; color:#fff; width:44px; height:56px; border-radius:8px 0 0 8px; display:grid; place-items:center; }
 
       /* Icônes simples */
       .icon-bubble { width: 18px; height: 18px; border: 2px solid #fff; border-radius: 4px; position: relative; }
@@ -234,46 +247,47 @@
     <header class="header">
       <div class="header-inner">
         <div class="tabs">
-          <div class="tab">Instructions et Aide</div>
-          <div class="tab">Ex 1 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 2 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 3 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 4 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 5 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 6 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 7 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 8 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 9 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 10 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 11 <span class="badge">1pts</span></div>
+          <div class="tab">&lt;&gt; Instructions et Aide</div>
+          <div class="tab">&lt;&gt; Ex 1 <span class="badge">1pts</span></div>
+          <div class="tab">&lt;&gt; Ex 2 <span class="badge">1pts</span></div>
+          <div class="tab">&lt;&gt; Ex 3 <span class="badge">1pts</span></div>
+          <div class="tab">&lt;&gt; Ex 4 <span class="badge">1pts</span></div>
+          <div class="tab">&lt;&gt; Ex 5 <span class="badge">1pts</span></div>
+          <div class="tab">&lt;&gt; Ex 6 <span class="badge">1pts</span></div>
+          <div class="tab">&lt;&gt; Ex 7 <span class="badge">1pts</span></div>
+          <div class="tab">&lt;&gt; Ex 8 <span class="badge">1pts</span></div>
+          <div class="tab">&lt;&gt; Ex 9 <span class="badge">1pts</span></div>
+          <div class="tab">&lt;&gt; Ex 10 <span class="badge">1pts</span></div>
+          <div class="tab">&lt;&gt; Ex 11 <span class="badge">1pts</span></div>
         </div>
-        <div class="status">Adrien Lassus* — Termine dans : 1h 54m</div>
+        <div class="status">Adrien Lassus* — Termine dans : 1h 30m 32s</div>
       </div>
     </header>
 
     <!-- Main layout -->
     <main class="layout">
-      <!-- Colonne gauche = rail + énoncé -->
+      <!-- Colonne gauche: pilule + carte + exécuter -->
       <section class="left-col">
-        <div class="left-rail">
-          <div class="rail-title">Instructions et Aide</div>
-          <div class="rail-ex-list">
-            <div class="ex-btn">Ex 1 <span class="badge">1pts</span></div>
-            <div class="ex-btn">Ex 2 <span class="badge">1pts</span></div>
-            <div class="ex-btn">Ex 3 <span class="badge">1pts</span></div>
-            <div class="ex-btn">Ex 4 <span class="badge">1pts</span></div>
-            <div class="ex-btn">Ex 5 <span class="badge">1pts</span></div>
-            <div class="ex-btn">Ex 6 <span class="badge">1pts</span></div>
-            <div class="ex-btn">Ex 7 <span class="badge">1pts</span></div>
-            <div class="ex-btn">Ex 8 <span class="badge">1pts</span></div>
-            <div class="ex-btn">Ex 9 <span class="badge">1pts</span></div>
-            <div class="ex-btn">Ex 10 <span class="badge">1pts</span></div>
-            <div class="ex-btn">Ex 11 <span class="badge">1pts</span></div>
+        <div class="enonce-wrapper">
+          <div class="enonce-pill"><span>Énoncé</span></div>
+          <div class="panel" style="border:1px solid var(--gutter); box-shadow: var(--shadow);">
+            <div class="panel-head">
+              <span>Énoncé</span>
+              <span style="display:inline-grid; place-items:center; width:28px; height:28px; background:#fff; color:#111; border-radius:6px;">⋮</span>
+            </div>
+            <div class="panel-body">
+              <div class="title">Transformation Matrice vers Vecteur</div>
+              <p style="color: var(--muted); margin: 0 0 8px;">Ecrire la méthode qui consiste à traduire une matrice en un tableau (ou vecteur) et retourner le tableau (ou vecteur) résultant</p>
+              <code style="display:block; background:#fafbfc; border:1px solid #eef2f6; padding:8px 10px; border-radius:6px;">int[] Matrice_Vecteur(int[,] mat)</code>
+              <p style="color: var(--muted);">Attention à tester les cas aux limites</p>
+              <div class="title" style="font-weight:600;">Exemple :</div>
+              <p style="color: var(--muted);">soit mat la matrice {{1,2,3},{4,5,6}, {7,8,9}}, le résultat est le suivant :<br/>{1,2,3,4,5,6,7,8,9}</p>
+              <p style="font-weight:600; margin-top: 14px;"><span class="hl">Pas de Main, ni d'affichage</span></p>
+            </div>
           </div>
-          <div class="timer-box">Adrien Lassus* — Termine dans : 1h 54m</div>
         </div>
-        <div class="panel">
-          <div class="panel-head">Énoncé</div>
+        <button class="execute" style="justify-self:start;">▶️ Exécuter</button>
+      </section>
           <div class="panel-body">
             <div class="title">Transformation Matrice vers Vecteur</div>
             <p style="color: var(--muted); margin: 0 0 8px;">Écrire la méthode qui consiste à traduire une matrice en un tableau (ou vecteur) et retourner le tableau (ou vecteur) résultant</p>
@@ -287,27 +301,27 @@
       </section>
 
       <!-- Éditeur -->
-      <section class="panel editor-card">
+      <section class="panel editor-card" style="border:1px solid var(--gutter); box-shadow: var(--shadow);">
         <div class="editor-toolbar">
-          <button class="btn">Snippets</button>
-          <button class="btn btn-square">+</button>
-          <button class="btn btn-danger btn-square" title="Sauvegarder">■</button>
+          <button class="btn btn-cyan">Snippets ▾</button>
+          <button class="btn btn-square btn-cyan" title="Ajouter">+</button>
+          <button class="btn btn-danger btn-square" title="Sauvegarder">💾</button>
           <div style="flex:1"></div>
           <label style="font-weight:600; color:#333;">Theme</label>
-          <select class="select"><option>Eclipse</option><option>Monokai</option><option>Tomorrow</option></select>
-          <button class="btn btn-square">-</button>
+          <select class="select"><option>Eclipse ▾</option><option>Monokai</option><option>Tomorrow</option></select>
+          <button class="btn btn-square">−</button>
           <button class="btn btn-square">+</button>
-          <button class="btn btn-square">⋯</button>
+          <button class="btn btn-square">⋮</button>
         </div>
         <div class="editor-area">
           <div class="gutter" id="gutter"></div>
           <div class="code" id="code" contenteditable="true" spellcheck="false"></div>
-          <button class="execute">Exécuter</button>
         </div>
+        <div class="editor-bottom"></div>
       </section>
 
       <!-- Chat enseignant -->
-      <aside class="panel chat">
+      <aside class="panel chat" style="border:1px solid var(--gutter); box-shadow: var(--shadow);">
         <div class="chat-head"><span class="icon-bubble"></span> Chat Enseignant</div>
         <div class="chat-body"></div>
         <div class="chat-footer">
@@ -322,7 +336,7 @@
             </div>
             <input class="input" placeholder="Tapez votre message..." />
           </div>
-          <button class="send">›</button>
+          <div class="drawer">&gt;</div>
         </div>
       </aside>
     </main>
@@ -338,9 +352,11 @@
       }
       code.addEventListener('input', refreshLines);
       window.addEventListener('resize', refreshLines);
-      code.innerText = '// Écrivez votre code ici\nusing System;\n\npublic class Program {\n    public static void Main() {\n        Console.WriteLine("Hello World");\n    }\n}';
+      code.innerText = '';
       refreshLines();
     </script>
+    <!-- Bouton flottant rouge C -->
+    <button style="position:fixed; right:16px; bottom:16px; width:42px; height:42px; border-radius:999px; background:#ef4444; color:#fff; border:none; font-weight:800; box-shadow: var(--shadow);">C</button>
   </body>
 </html>
 
