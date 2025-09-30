@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Examen - Mock UI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --green: #2a7e1f; /* bandeau et entêtes */
+        --green-hover: #39a52a; /* hover onglets */
+        --badge: #1e6915;
+        --blue: #1778f2; /* bouton exécuter */
+        --bg: #f5f6f8;
+        --card: #ffffff;
+        --text: #222;
+        --muted: #555;
+        --gutter: #e9edf3;
+      }
+
+      html, body {
+        height: 100%;
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+      }
+
+      /* Header sticky avec onglets et timer */
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--green);
+        color: #fff;
+        box-shadow: 0 2px 0 rgba(0,0,0,0.08);
+      }
+      .header-inner {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 16px;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 10px 16px;
+      }
+      .tabs {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .tab {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.25);
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 6px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        line-height: 1;
+        cursor: pointer;
+        user-select: none;
+      }
+      .tab:hover { background: var(--green-hover); border-color: transparent; }
+      .badge {
+        background: var(--badge);
+        padding: 2px 6px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 12px;
+      }
+      .status {
+        text-align: right;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      /* Layout 3 colonnes */
+      .layout {
+        max-width: 1400px;
+        margin: 16px auto;
+        padding: 0 16px 16px;
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr) 360px; /* gauche / centre / droite */
+        gap: 16px;
+        align-items: start;
+      }
+
+      /* Bloc Énoncé */
+      .panel {
+        background: var(--card);
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        overflow: hidden;
+      }
+      .panel .panel-head {
+        background: #1881ff; /* bleu bandeau */
+        color: #fff;
+        padding: 10px 14px;
+        font-weight: 700;
+      }
+      .panel .panel-body {
+        padding: 16px 16px 18px;
+      }
+      .panel .title { font-weight: 700; margin: 6px 0 10px; }
+      .panel .hl { background: #ffeb3b; padding: 0 4px; }
+      .panel ul { margin: 8px 0 0 18px; color: var(--muted); }
+      .panel li { margin: 6px 0; }
+
+      /* Éditeur */
+      .editor-card { height: calc(100vh - 140px); display: flex; flex-direction: column; }
+      .editor-toolbar {
+        background: #f0f2f5;
+        border-bottom: 1px solid #e1e4ea;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn {
+        background: #fff;
+        border: 1px solid #d7dce3;
+        color: var(--text);
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .btn-ghost { background: transparent; color: #2b2f36; }
+      .btn-danger { background: #e14949; border-color: #d13e3e; color: #fff; }
+      .btn-square { width: 32px; height: 32px; display: grid; place-items: center; padding: 0; }
+      .select { height: 32px; border: 1px solid #d7dce3; border-radius: 6px; padding: 0 8px; background: #fff; }
+
+      .editor-area {
+        position: relative;
+        flex: 1;
+        background: #fff;
+        display: grid;
+        grid-template-columns: 52px 1fr; /* gouttière + code */
+      }
+      .gutter {
+        background: #fbfcfe;
+        border-right: 1px solid var(--gutter);
+        color: #9aa3af;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 13px;
+        padding: 12px 8px;
+        line-height: 22px;
+        counter-reset: line 0;
+      }
+      .gutter div { counter-increment: line; }
+      .gutter div::before { content: counter(line); display: block; text-align: right; }
+      .code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 13px;
+        padding: 12px 12px;
+        line-height: 22px;
+        white-space: pre;
+        overflow: auto;
+      }
+      .execute {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        background: var(--blue);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 14px;
+        font-weight: 700;
+        box-shadow: 0 4px 14px rgba(23,120,242,0.25);
+        cursor: pointer;
+      }
+
+      /* Chat enseignant */
+      .chat-head {
+        background: var(--green);
+        color: #fff;
+        padding: 10px 14px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .chat-body { height: calc(100vh - 250px); overflow: auto; padding: 12px; }
+      .chat-footer {
+        border-top: 1px solid #e1e4ea;
+        background: #f5f6f8;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 1fr 40px;
+        gap: 10px;
+        align-items: center;
+      }
+      .toolbar {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 8px;
+      }
+      .tool { background: #fff; border: 1px solid #d7dce3; width: 32px; height: 32px; border-radius: 6px; display: grid; place-items: center; cursor: pointer; }
+      .input { background: #fff; border: 1px solid #d7dce3; border-radius: 8px; padding: 10px 12px; }
+      .send { background: #0d6efd; color: #fff; border: none; border-radius: 10px; height: 40px; display: grid; place-items: center; cursor: pointer; }
+
+      /* Icônes simples */
+      .icon-bubble { width: 18px; height: 18px; border: 2px solid #fff; border-radius: 4px; position: relative; }
+      .icon-bubble::after { content: ""; position: absolute; bottom: -4px; left: 4px; width: 8px; height: 8px; background: #fff; transform: rotate(45deg); }
+
+      /* Aide visuelle responsive */
+      @media (max-width: 1100px) {
+        .layout { grid-template-columns: 280px 1fr; }
+        .chat { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="tabs">
+          <div class="tab">Instructions et Aide</div>
+          <div class="tab">Ex 1 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 2 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 3 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 4 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 5 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 6 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 7 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 8 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 9 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 10 <span class="badge">1pts</span></div>
+          <div class="tab">Ex 11 <span class="badge">1pts</span></div>
+        </div>
+        <div class="status">Adrien Lassus* — Termine dans : 1h 54m</div>
+      </div>
+    </header>
+
+    <!-- Main layout -->
+    <main class="layout">
+      <!-- Énoncé -->
+      <section class="panel">
+        <div class="panel-head">Énoncé</div>
+        <div class="panel-body">
+          <div class="title">Transformation Matrice vers Vecteur</div>
+          <p style="color: var(--muted); margin: 0 0 8px;">Écrire la méthode qui consiste à traduire une matrice en un tableau (ou vecteur) et retourner le tableau (ou vecteur) résultant</p>
+          <code style="display:block; background:#fafbfc; border:1px solid #eef2f6; padding:8px 10px; border-radius:6px;">int[] Matrice_Vecteur(int[,] mat)</code>
+          <p style="color: var(--muted);">Attention à tester les cas aux limites</p>
+          <div class="title" style="font-weight:600;">Exemple : <span class="hl"> </span></div>
+          <p style="color: var(--muted);">soit mat la matrice {{1,2,3},{4,5,6},{7,8,9}}, le résultat est le suivant : {1,2,3,4,5,6,7,8,9}</p>
+          <p style="font-weight:600; margin-top: 14px;"><span class="hl">Pas de Main, ni d'affichage</span></p>
+        </div>
+      </section>
+
+      <!-- Éditeur -->
+      <section class="panel editor-card">
+        <div class="editor-toolbar">
+          <button class="btn">Snippets</button>
+          <button class="btn btn-square">+</button>
+          <button class="btn btn-danger btn-square" title="Sauvegarder">■</button>
+          <div style="flex:1"></div>
+          <label style="font-weight:600; color:#333;">Theme</label>
+          <select class="select"><option>Eclipse</option><option>Monokai</option><option>Tomorrow</option></select>
+          <button class="btn btn-square">-</button>
+          <button class="btn btn-square">+</button>
+          <button class="btn btn-square">⋯</button>
+        </div>
+        <div class="editor-area">
+          <div class="gutter" id="gutter"></div>
+          <div class="code" id="code" contenteditable="true" spellcheck="false"></div>
+          <button class="execute">Exécuter</button>
+        </div>
+      </section>
+
+      <!-- Chat enseignant -->
+      <aside class="panel chat">
+        <div class="chat-head"><span class="icon-bubble"></span> Chat Enseignant</div>
+        <div class="chat-body"></div>
+        <div class="chat-footer">
+          <div>
+            <div class="toolbar">
+              <div class="tool" title="Gras">B</div>
+              <div class="tool" title="Italique">I</div>
+              <div class="tool" title="Souligné">U</div>
+              <div class="tool" title="Couleur">A</div>
+              <div class="tool" title="Liste">≡</div>
+              <div class="tool" title="Liste ordonnée">1.</div>
+            </div>
+            <input class="input" placeholder="Tapez votre message..." />
+          </div>
+          <button class="send">›</button>
+        </div>
+      </aside>
+    </main>
+
+    <script>
+      // Génère des numéros de lignes visuellement proches d'un IDE
+      const gutter = document.getElementById('gutter');
+      const code = document.getElementById('code');
+      function refreshLines() {
+        const text = code.innerText.split('\n').length;
+        const lines = Math.max(text, 20); // au moins 20 lignes visibles
+        gutter.innerHTML = Array.from({length: lines}, ()=>'\n').map(()=>'<div></div>').join('');
+      }
+      code.addEventListener('input', refreshLines);
+      window.addEventListener('resize', refreshLines);
+      code.innerText = '// Écrivez votre code ici\nusing System;\n\npublic class Program {\n    public static void Main() {\n        Console.WriteLine("Hello World");\n    }\n}';
+      refreshLines();
+    </script>
+  </body>
+</html>
+
+
