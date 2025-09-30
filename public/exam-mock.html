@@ -42,8 +42,7 @@
         box-shadow: 0 2px 0 rgba(0,0,0,0.08);
       }
       .header-inner {
-        display: grid;
-        grid-template-columns: 1fr auto;
+        display: flex;
         align-items: center;
         gap: 16px;
         width: 100%;
@@ -56,6 +55,7 @@
         overflow-x: auto;
         white-space: nowrap;
         scrollbar-width: none;
+        flex: 1 1 auto; /* occupe toute la largeur dispo */
       }
       .tabs::-webkit-scrollbar{ display:none }
       .tab {
