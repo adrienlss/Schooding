@@ -474,6 +474,15 @@
         transition: background 0.2s;
       }
       .float-btn:hover { background: #dc2626; }
+
+      /* Sécurité: masquer toute duplication d'onglets dans le contenu */
+      main .tabs,
+      #layout .tabs,
+      .layout .tabs,
+      .editor-toolbar .tabs,
+      .toolbar .tabs {
+        display: none !important;
+      }
     </style>
   </head>
   <body>

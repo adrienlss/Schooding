@@ -30,18 +30,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black`}>
-        <header className="sticky top-0 z-50 w-full bg-[#3f6f0d] text-white shadow">
-          <div className="mx-auto max-w-full px-3 sm:px-6 lg:px-10">
-            <div className="flex h-14 items-center justify-between">
-              <HeaderNav />
-              <div className="text-xs opacity-90">Adrien Lassus* · Termine dans : 1h 59m</div>
-            </div>
-          </div>
-        </header>
-        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">{children}</div>
-        </main>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black`} style={{ margin: 0, padding: 0 }}>
+        {children}
       </body>
     </html>
   );
