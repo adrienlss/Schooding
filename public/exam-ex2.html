@@ -80,8 +80,10 @@
         cursor: pointer;
         white-space: nowrap;
         transition: background 0.2s;
+        text-decoration: none;
       }
-      .tab:hover { background: var(--green-650); border-color: transparent; }
+      .tab:hover { background: var(--green-650); border-color: transparent; color: #fff; }
+      .tab:visited { color: #fff; }
       .tab-icon { font-size: 14px; line-height: 1; }
       .badge {
         display: inline-flex;
@@ -486,18 +488,18 @@
     <header class="header">
       <div class="header-inner">
         <div class="tabs">
-          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Instructions et Aide</div>
-          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 1 <span class="badge">1pts</span></div>
-          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 2 <span class="badge">1pts</span></div>
-          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 3 <span class="badge">1pts</span></div>
-          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 4 <span class="badge">1pts</span></div>
-          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 5 <span class="badge">1pts</span></div>
-          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 6 <span class="badge">1pts</span></div>
-          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 7 <span class="badge">1pts</span></div>
-          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 8 <span class="badge">1pts</span></div>
-          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 9 <span class="badge">1pts</span></div>
-          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 10 <span class="badge">1pts</span></div>
-          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 11 <span class="badge">1pts</span></div>
+          <a href="/instructions" class="tab"><span class="tab-icon">&lt;&gt;</span> Instructions et Aide</a>
+          <a href="/ex1" class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 1 <span class="badge">1pts</span></a>
+          <a href="/ex2" class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 2 <span class="badge">1pts</span></a>
+          <a href="/ex3" class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 3 <span class="badge">1pts</span></a>
+          <a href="/ex4" class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 4 <span class="badge">1pts</span></a>
+          <a href="/ex5" class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 5 <span class="badge">1pts</span></a>
+          <a href="/ex6" class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 6 <span class="badge">1pts</span></a>
+          <a href="/ex7" class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 7 <span class="badge">1pts</span></a>
+          <a href="/ex8" class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 8 <span class="badge">1pts</span></a>
+          <a href="/ex9" class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 9 <span class="badge">1pts</span></a>
+          <a href="/ex10" class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 10 <span class="badge">1pts</span></a>
+          <a href="/ex11" class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 11 <span class="badge">1pts</span></a>
         </div>
         <div class="status">
           <span>Adrien Lassus* — Termine dans : 1h 30m 32s</span>
