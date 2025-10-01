@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Exercice 2 - Schooding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --green-700: #2a7e1f;
+        --green-650: #339126;
+        --tab-badge: rgba(0,0,0,.28);
+        --toolbar: #f1f4f7;
+        --blue-700: #115ad6;
+        --gutter: #f7f8fb;
+        --gutter-border: #e3e6ec;
+        --line-active: #eef4ff;
+        --blue-600: #1677ff;
+        --blue-rail: #1e88e5;
+        --red-500: #ef4444;
+        --text: #111827;
+        --muted: #6b7280;
+        --border: #e5e7eb;
+        --card: #fff;
+        --highlight: #ffeb3b;
+        --shadow: 0 1px 2px rgba(0,0,0,.06), 0 4px 10px rgba(0,0,0,.08);
+      }
+
+      * { box-sizing: border-box; }
+      
+      html, body {
+        height: 100%;
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        font-size: 14px;
+        color: var(--text);
+        background: #f3f4f6;
+        min-width: 1280px;
+      }
+
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--green-700);
+        color: #fff;
+        height: 60px;
+        box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        padding: 0 24px;
+      }
+      .tabs {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        overflow-x: auto;
+        flex: 1;
+        scrollbar-width: none;
+      }
+      .tabs::-webkit-scrollbar { display: none; }
+      .tab {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.15);
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 1;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: background 0.2s;
+      }
+      .tab:hover { background: var(--green-650); border-color: transparent; }
+      .tab-icon { font-size: 14px; line-height: 1; }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 18px;
+        padding: 0 6px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 12px;
+        background: var(--tab-badge);
+        color: #fff;
+      }
+      .status {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 600;
+        font-size: 14px;
+        color: #fff;
+        white-space: nowrap;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 300px 1fr 360px;
+        gap: 12px;
+        padding: 12px 16px 16px;
+      }
+
+      .left-col {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      
+      .enonce-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .enonce-head {
+        height: 44px;
+        background: var(--blue-rail);
+        color: #fff;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 700;
+        font-size: 15px;
+        border-radius: 8px 8px 0 0;
+      }
+      .menu-btn {
+        width: 28px;
+        height: 28px;
+        background: #fff;
+        color: var(--blue-rail);
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .enonce-body {
+        padding: 16px 16px 18px;
+      }
+      .enonce-title {
+        font-weight: 700;
+        font-size: 17px;
+        margin: 0 0 12px;
+        color: var(--text);
+      }
+      .enonce-body p {
+        margin: 0 0 12px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+      .enonce-body code {
+        display: block;
+        background: #f7fafc;
+        border: 1px solid var(--border);
+        padding: 8px 10px;
+        border-radius: 6px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+        font-size: 14px;
+        margin: 12px 0;
+        color: var(--text);
+      }
+      .hl {
+        display: inline-block;
+        background: var(--highlight);
+        padding: 2px 4px;
+        border-radius: 2px;
+        line-height: 1.2;
+        font-weight: 600;
+      }
+
+      .editor-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 84px);
+        position: relative;
+        overflow: hidden;
+      }
+      .editor-toolbar {
+        height: 48px;
+        background: var(--toolbar);
+        border-bottom: 1px solid var(--gutter-border);
+        padding: 0 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+      .btn {
+        background: #fff;
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn:hover { background: #f9fafb; }
+      .btn:focus { outline: none; box-shadow: 0 0 0 3px rgba(22,119,255,.35); }
+      .btn-snippets {
+        background: #e7f0ff;
+        color: #1e3a8a;
+        border-color: #bfdbfe;
+      }
+      .btn-add {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        display: grid;
+        place-items: center;
+        background: #00bcd4;
+        color: #fff;
+        border-color: #00acc1;
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .btn-save {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        display: grid;
+        place-items: center;
+        background: var(--red-500);
+        color: #fff;
+        border-color: #dc2626;
+        font-size: 16px;
+      }
+      .btn-square {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        display: grid;
+        place-items: center;
+        font-size: 16px;
+      }
+      .toolbar-spacer { flex: 1; }
+      .toolbar-label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #374151;
+        padding: 6px 10px;
+        background: #f1f5f9;
+        border-radius: 8px;
+      }
+      .select {
+        height: 36px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0 10px;
+        background: #fff;
+        font-size: 13px;
+        color: var(--text);
+        cursor: pointer;
+      }
+      .select:focus { outline: none; box-shadow: 0 0 0 3px rgba(22,119,255,.35); }
+
+      .editor-area {
+        flex: 1;
+        background: #fff;
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        overflow: hidden;
+      }
+      .gutter {
+        background: var(--gutter);
+        border-right: 1px solid var(--gutter-border);
+        color: #9ca3af;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+        font-size: 14px;
+        padding: 12px 8px;
+        line-height: 1.5;
+        text-align: right;
+        user-select: none;
+        overflow: hidden;
+      }
+      .code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+        font-size: 14px;
+        padding: 12px;
+        line-height: 1.5;
+        white-space: pre;
+        overflow: auto;
+        color: var(--text);
+      }
+      .code:focus { outline: none; }
+      .editor-bottom {
+        height: 44px;
+        background: var(--toolbar);
+        border-top: 1px solid var(--gutter-border);
+        flex-shrink: 0;
+      }
+      .execute {
+        position: absolute;
+        left: 12px;
+        bottom: 56px;
+        height: 36px;
+        background: var(--blue-600);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 0 14px;
+        font-weight: 700;
+        font-size: 14px;
+        box-shadow: 0 4px 14px rgba(22,119,255,0.3);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        z-index: 10;
+        transition: background 0.2s;
+      }
+      .execute:hover { background: #0d6efd; }
+      .execute-icon {
+        width: 20px;
+        height: 20px;
+        background: var(--blue-700);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 12px;
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .chat-card {
+        width: 360px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 84px);
+        overflow: hidden;
+      }
+      .chat-head {
+        height: 44px;
+        background: var(--green-700);
+        color: #fff;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 15px;
+        border-radius: 8px 8px 0 0;
+        flex-shrink: 0;
+      }
+      .icon-bubble {
+        width: 18px;
+        height: 18px;
+        border: 2px solid #fff;
+        border-radius: 4px;
+        position: relative;
+      }
+      .icon-bubble::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 4px;
+        width: 8px;
+        height: 8px;
+        background: #fff;
+        transform: rotate(45deg);
+      }
+      .chat-body {
+        flex: 1;
+        background: #fff;
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+        overflow-y: auto;
+        padding: 12px;
+      }
+      .chat-footer {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-top: none;
+        border-radius: 0 0 8px 8px;
+        padding: 8px;
+        display: grid;
+        grid-template-columns: 1fr 44px;
+        align-items: end;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+      .chat-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .toolbar {
+        display: flex;
+        gap: 6px;
+      }
+      .tool {
+        width: 32px;
+        height: 32px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 13px;
+        color: var(--text);
+        transition: background 0.2s;
+      }
+      .tool:hover { background: #f9fafb; }
+      .tool.active { background: #ffed7a; }
+      .input {
+        width: 100%;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 8px 12px;
+        font-size: 14px;
+        color: var(--text);
+        font-family: inherit;
+        resize: none;
+      }
+      .input:focus { outline: none; box-shadow: 0 0 0 3px rgba(22,119,255,.35); }
+      .input::placeholder { color: #9ca3af; }
+      .drawer {
+        width: 44px;
+        height: 56px;
+        background: #2563eb;
+        color: #fff;
+        border-radius: 8px 0 0 8px;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        font-size: 24px;
+        font-weight: 700;
+        transition: background 0.2s;
+      }
+      .drawer:hover { background: #1d4ed8; }
+
+      .float-btn {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--red-500);
+        color: #fff;
+        border: none;
+        font-weight: 800;
+        font-size: 18px;
+        box-shadow: 0 4px 12px rgba(239,68,68,0.4);
+        cursor: pointer;
+        z-index: 100;
+        transition: background 0.2s;
+      }
+      .float-btn:hover { background: #dc2626; }
+
+      main .tabs,
+      .layout .tabs {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <div class="tabs">
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Instructions et Aide</div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 1 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 2 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 3 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 4 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 5 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 6 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 7 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 8 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 9 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 10 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 11 <span class="badge">1pts</span></div>
+        </div>
+        <div class="status">
+          <span>Adrien Lassus* — Termine dans : 1h 30m 32s</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="left-col">
+        <div class="enonce-card">
+          <div class="enonce-head">
+            <span>Énoncé</span>
+            <span class="menu-btn">⋮</span>
+          </div>
+          <div class="enonce-body">
+            <div class="enonce-title">Décaler les valeurs d'une matrice</div>
+            <p>Soit une matrice d'entiers en entrée et une valeur entière qui représente un décalage.</p>
+            <p>Il vous est demandé que la matrice soit modifiée de telle manière que les valeurs de cette matrice soient décalées de manière circulaire.</p>
+            <p>Vous aurez soin de tester les cas d'une matrice null ou de longueur 0 auquel cas la matrice est inchangée.</p>
+            <code>static void DecaleMatrice(int[,] mat, int valeur)</code>
+            <p style="font-weight:600; color:var(--text); margin-bottom:6px;"><span class="hl">Exemple :</span> soit la matrice suivante {{1,2},{3,4}}</p>
+            <p>avec un décalage de 1, on obtient alors {{4,1},{2,3}}</p>
+            <p>avec un décalage de 2, on obtient alors {{3,4},{1,2}}</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="editor-card">
+        <div class="editor-toolbar">
+          <button class="btn btn-snippets">Snippets ▾</button>
+          <button class="btn btn-add">+</button>
+          <button class="btn btn-save">💾</button>
+          <div class="toolbar-spacer"></div>
+          <span class="toolbar-label">Theme</span>
+          <select class="select">
+            <option>Eclipse ▾</option>
+            <option>Monokai</option>
+            <option>Tomorrow</option>
+          </select>
+          <button class="btn btn-square">−</button>
+          <button class="btn btn-square">+</button>
+          <button class="btn btn-square">⋯</button>
+        </div>
+        <div class="editor-area">
+          <div class="gutter" id="gutter">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20</div>
+          <div class="code" id="code" contenteditable="true" spellcheck="false"></div>
+        </div>
+        <div class="editor-bottom"></div>
+        <button class="execute">
+          <span class="execute-icon">▶</span>
+          Exécuter
+        </button>
+      </section>
+
+      <aside class="chat-card">
+        <div class="chat-head">
+          <span class="icon-bubble"></span>
+          Chat Enseignant
+        </div>
+        <div class="chat-body"></div>
+        <div class="chat-footer">
+          <div class="chat-controls">
+            <div class="toolbar">
+              <div class="tool">B</div>
+              <div class="tool">I</div>
+              <div class="tool">U</div>
+              <div class="tool active">A</div>
+              <div class="tool">≡</div>
+              <div class="tool">1.</div>
+            </div>
+            <input class="input" placeholder="Tapez votre message..." />
+          </div>
+          <div class="drawer">&gt;</div>
+        </div>
+      </aside>
+    </main>
+
+    <button class="float-btn">C</button>
+
+    <script>
+      const gutter = document.getElementById('gutter');
+      const code = document.getElementById('code');
+      
+      function refreshLines() {
+        const lines = code.innerText.split('\n').length;
+        const total = Math.max(lines, 20);
+        let html = '';
+        for (let i = 1; i <= total; i++) {
+          html += i + '<br>';
+        }
+        gutter.innerHTML = html;
+      }
+      
+      code.addEventListener('input', refreshLines);
+      refreshLines();
+    </script>
+  </body>
+</html>
+
