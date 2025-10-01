@@ -10,9 +10,9 @@
     <style>
       :root { --green:#2a7e1f; --green-hover:#39a52a; --badge:#1e6915; --bg:#fff; --muted:#333; }
       *{ box-sizing:border-box }
-      body{ margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#111; background:#fff; }
-      .header{ position:sticky; top:0; z-index:10; background:var(--green); color:#fff; }
-      .header-inner{ margin:0; padding:10px 16px; display:flex; align-items:center; gap:12px; }
+      body{ margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#111; background:#fff; min-width:1280px; }
+      .header{ position:sticky; top:0; z-index:10; background:var(--green); color:#fff; height:60px; }
+      .header-inner{ margin:0; padding:10px 24px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
       .tabs{ display:flex; gap:8px; align-items:center; overflow-x:auto; white-space:nowrap; scrollbar-width:none; flex:1 1 auto; }
       .tabs::-webkit-scrollbar{ display:none }
       .tab{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.25); color:#fff; padding:6px 10px; border-radius:6px; font-weight:700; display:inline-flex; align-items:center; gap:8px; }

@@ -3,7 +3,7 @@ export default function Placeholder() {
     <iframe
       src="/exam-mock.html"
       title="Examen"
-      style={{ width: '100%', height: '100vh', border: 'none' }}
+      style={{ width: '100vw', height: '100vh', border: 'none', minWidth: '1280px' }}
     />
   );
 }

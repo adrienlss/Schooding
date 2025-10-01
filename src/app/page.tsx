@@ -3,7 +3,7 @@ export default function Home() {
     <iframe
       src="/instructions-mock.html"
       title="Instructions"
-      style={{ width: '100%', height: '100vh', border: 'none' }}
+      style={{ width: '100vw', height: '100vh', border: 'none', minWidth: '1280px' }}
     />
   );
 }
