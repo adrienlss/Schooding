@@ -9,17 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
       :root {
-        --green-700: #2a7e1f;
-        --green-600: #349224;
+        --green-700: #275f12;
+        --green-650: #2c6b15;
+        --tab-badge: rgba(0,0,0,.28);
+        --toolbar: #ecf0f3;
+        --gutter: #f5f6fa;
+        --gutter-border: #e3e6ec;
+        --line-active: #edf4ff;
         --blue-600: #1677ff;
         --blue-rail: #1e88e5;
         --red-500: #ef4444;
-        --gray-50: #fafafa;
-        --gray-100: #f3f4f6;
-        --gray-200: #e5e7eb;
-        --gray-400: #9ca3af;
-        --gray-600: #6b7280;
-        --gray-900: #111827;
+        --text: #111827;
+        --muted: #6b7280;
+        --border: #e5e7eb;
+        --card: #fff;
         --highlight: #ffeb3b;
         --shadow: 0 1px 2px rgba(0,0,0,.06), 0 4px 10px rgba(0,0,0,.08);
       }
@@ -31,8 +34,8 @@
         margin: 0;
         font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
         font-size: 14px;
-        color: var(--gray-900);
-        background: var(--gray-100);
+        color: var(--text);
+        background: #f3f4f6;
         min-width: 1280px;
       }
 
@@ -44,7 +47,7 @@
         background: var(--green-700);
         color: #fff;
         height: 60px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 0 rgba(0,0,0,0.05);
       }
       .header-inner {
         display: flex;
@@ -55,7 +58,7 @@
       }
       .tabs {
         display: flex;
-        gap: 8px;
+        gap: 12px;
         align-items: center;
         overflow-x: auto;
         flex: 1;
@@ -64,21 +67,22 @@
       .tabs::-webkit-scrollbar { display: none; }
       .tab {
         background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.15);
         color: #fff;
-        padding: 8px 12px;
-        border-radius: 8px;
+        padding: 6px 10px;
+        border-radius: 10px;
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        font-weight: 700;
+        font-weight: 600;
         font-size: 13px;
         line-height: 1;
         cursor: pointer;
         white-space: nowrap;
         transition: background 0.2s;
       }
-      .tab:hover { background: var(--green-600); border-color: transparent; }
+      .tab:hover { background: var(--green-650); border-color: transparent; }
+      .tab-icon { font-size: 13px; }
       .badge {
         display: inline-flex;
         align-items: center;
@@ -86,9 +90,9 @@
         height: 18px;
         padding: 0 6px;
         border-radius: 999px;
-        font-weight: 700;
+        font-weight: 600;
         font-size: 12px;
-        background: rgba(0,0,0,.25);
+        background: var(--tab-badge);
         color: #fff;
       }
       .status {
@@ -114,13 +118,13 @@
         width: 300px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 0;
       }
       
       /* Carte Énoncé */
       .enonce-card {
-        background: #fff;
-        border: 1px solid var(--gray-200);
+        background: var(--card);
+        border: 1px solid var(--border);
         border-radius: 8px;
         box-shadow: var(--shadow);
         overflow: hidden;
@@ -150,29 +154,29 @@
         font-weight: 700;
       }
       .enonce-body {
-        padding: 16px 16px 20px;
+        padding: 16px 16px 18px;
       }
       .enonce-title {
         font-weight: 700;
-        font-size: 16px;
+        font-size: 17px;
         margin: 0 0 12px;
-        color: var(--gray-900);
+        color: var(--text);
       }
       .enonce-body p {
         margin: 0 0 12px;
-        color: var(--gray-600);
-        line-height: 1.5;
+        color: var(--muted);
+        line-height: 1.45;
       }
       .enonce-body code {
         display: block;
-        background: #fafbfc;
-        border: 1px solid #eef2f6;
+        background: #f7fafc;
+        border: 1px solid var(--border);
         padding: 8px 10px;
         border-radius: 6px;
         font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-        font-size: 13px;
+        font-size: 14px;
         margin: 12px 0;
-        color: var(--gray-900);
+        color: var(--text);
       }
       .hl {
         display: inline-block;
@@ -185,8 +189,8 @@
 
       /* Éditeur */
       .editor-card {
-        background: #fff;
-        border: 1px solid var(--gray-200);
+        background: var(--card);
+        border: 1px solid var(--border);
         border-radius: 8px;
         box-shadow: var(--shadow);
         display: flex;
@@ -197,8 +201,8 @@
       }
       .editor-toolbar {
         height: 48px;
-        background: var(--gray-100);
-        border-bottom: 1px solid var(--gray-200);
+        background: var(--toolbar);
+        border-bottom: 1px solid var(--gutter-border);
         padding: 0 12px;
         display: flex;
         align-items: center;
@@ -207,8 +211,8 @@
       }
       .btn {
         background: #fff;
-        border: 1px solid var(--gray-200);
-        color: var(--gray-900);
+        border: 1px solid var(--border);
+        color: var(--text);
         padding: 8px 12px;
         border-radius: 8px;
         font-weight: 600;
@@ -216,12 +220,12 @@
         cursor: pointer;
         transition: all 0.2s;
       }
-      .btn:hover { background: var(--gray-50); }
+      .btn:hover { background: #f9fafb; }
       .btn:focus { outline: none; box-shadow: 0 0 0 3px rgba(22,119,255,.35); }
       .btn-snippets {
-        background: #e6f0ff;
-        color: #1e63d0;
-        border-color: #d0e3ff;
+        background: #e7f0ff;
+        color: #1e3a8a;
+        border-color: #bfdbfe;
       }
       .btn-add {
         width: 32px;
@@ -232,7 +236,7 @@
         background: #00bcd4;
         color: #fff;
         border-color: #00acc1;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 700;
       }
       .btn-save {
@@ -244,7 +248,7 @@
         background: var(--red-500);
         color: #fff;
         border-color: #dc2626;
-        font-size: 18px;
+        font-size: 16px;
       }
       .btn-square {
         width: 32px;
@@ -258,19 +262,19 @@
       .toolbar-label {
         font-size: 12px;
         font-weight: 600;
-        color: var(--gray-600);
+        color: #374151;
         padding: 4px 8px;
-        background: var(--gray-100);
+        background: #f1f5f9;
         border-radius: 4px;
       }
       .select {
         height: 36px;
-        border: 1px solid var(--gray-200);
+        border: 1px solid var(--border);
         border-radius: 8px;
         padding: 0 10px;
         background: #fff;
         font-size: 13px;
-        color: var(--gray-900);
+        color: var(--text);
         cursor: pointer;
       }
       .select:focus { outline: none; box-shadow: 0 0 0 3px rgba(22,119,255,.35); }
@@ -283,9 +287,9 @@
         overflow: hidden;
       }
       .gutter {
-        background: #f7f7f9;
-        border-right: 1px solid var(--gray-200);
-        color: var(--gray-400);
+        background: var(--gutter);
+        border-right: 1px solid var(--gutter-border);
+        color: #9ca3af;
         font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
         font-size: 14px;
         padding: 12px 8px;
@@ -301,13 +305,15 @@
         line-height: 1.5;
         white-space: pre;
         overflow: auto;
-        color: var(--gray-900);
+        color: var(--text);
       }
-      .code:focus { outline: none; background: #f2f6ff; }
+      .code:focus { outline: none; }
+      .code-line { background: transparent; }
+      .code-line.active { background: var(--line-active); }
       .editor-bottom {
         height: 44px;
-        background: var(--gray-100);
-        border-top: 1px solid var(--gray-200);
+        background: var(--toolbar);
+        border-top: 1px solid var(--gutter-border);
         flex-shrink: 0;
       }
       .execute {
@@ -344,8 +350,8 @@
       /* Chat */
       .chat-card {
         width: 360px;
-        background: #fff;
-        border: 1px solid var(--gray-200);
+        background: var(--card);
+        border: 1px solid var(--border);
         border-radius: 8px;
         box-shadow: var(--shadow);
         display: flex;
@@ -386,14 +392,14 @@
       .chat-body {
         flex: 1;
         background: #fff;
-        border-left: 1px solid var(--gray-200);
-        border-right: 1px solid var(--gray-200);
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
         overflow-y: auto;
         padding: 12px;
       }
       .chat-footer {
         background: #fff;
-        border: 1px solid var(--gray-200);
+        border: 1px solid var(--border);
         border-top: none;
         border-radius: 0 0 8px 8px;
         padding: 8px;
@@ -416,34 +422,35 @@
         width: 32px;
         height: 32px;
         background: #fff;
-        border: 1px solid var(--gray-200);
+        border: 1px solid var(--border);
         border-radius: 8px;
         display: grid;
         place-items: center;
         cursor: pointer;
         font-weight: 700;
         font-size: 13px;
-        color: var(--gray-900);
+        color: var(--text);
         transition: background 0.2s;
       }
-      .tool:hover { background: var(--gray-50); }
+      .tool:hover { background: #f9fafb; }
+      .tool.active { background: #ffed7a; }
       .input {
         width: 100%;
         background: #fff;
-        border: 1px solid var(--gray-200);
+        border: 1px solid var(--border);
         border-radius: 8px;
         padding: 8px 12px;
         font-size: 14px;
-        color: var(--gray-900);
+        color: var(--text);
         font-family: inherit;
         resize: none;
       }
       .input:focus { outline: none; box-shadow: 0 0 0 3px rgba(22,119,255,.35); }
-      .input::placeholder { color: var(--gray-400); }
+      .input::placeholder { color: #9ca3af; }
       .drawer {
         width: 44px;
         height: 56px;
-        background: #2a66ff;
+        background: #2563eb;
         color: #fff;
         border-radius: 8px 0 0 8px;
         display: grid;
@@ -453,7 +460,7 @@
         font-weight: 700;
         transition: background 0.2s;
       }
-      .drawer:hover { background: #1e54e6; }
+      .drawer:hover { background: #1d4ed8; }
 
       /* Bouton flottant */
       .float-btn {
@@ -475,12 +482,9 @@
       }
       .float-btn:hover { background: #dc2626; }
 
-      /* Sécurité: masquer toute duplication d'onglets dans le contenu */
+      /* Sécurité: masquer toute duplication d'onglets */
       main .tabs,
-      #layout .tabs,
-      .layout .tabs,
-      .editor-toolbar .tabs,
-      .toolbar .tabs {
+      .layout .tabs {
         display: none !important;
       }
     </style>
@@ -490,23 +494,21 @@
     <header class="header">
       <div class="header-inner">
         <div class="tabs">
-          <div class="tab"><> Instructions et Aide</div>
-          <div class="tab"><> Ex 1 <span class="badge">1pts</span></div>
-          <div class="tab"><> Ex 2 <span class="badge">1pts</span></div>
-          <div class="tab"><> Ex 3 <span class="badge">1pts</span></div>
-          <div class="tab"><> Ex 4 <span class="badge">1pts</span></div>
-          <div class="tab"><> Ex 5 <span class="badge">1pts</span></div>
-          <div class="tab"><> Ex 6 <span class="badge">1pts</span></div>
-          <div class="tab"><> Ex 7 <span class="badge">1pts</span></div>
-          <div class="tab"><> Ex 8 <span class="badge">1pts</span></div>
-          <div class="tab"><> Ex 9 <span class="badge">1pts</span></div>
-          <div class="tab"><> Ex 10 <span class="badge">1pts</span></div>
-          <div class="tab"><> Ex 11 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Instructions et Aide</div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 1 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 2 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 3 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 4 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 5 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 6 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 7 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 8 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 9 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 10 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 11 <span class="badge">1pts</span></div>
         </div>
         <div class="status">
-          <span>Adrien Lassus*</span>
-          <span>—</span>
-          <span>Termine dans : 1h 30m 32s</span>
+          <span>Adrien Lassus* — Termine dans : 1h 30m 32s</span>
         </div>
       </div>
     </header>
@@ -525,7 +527,7 @@
             <p>Ecrire la méthode qui consiste à traduire une matrice en un tableau (ou vecteur) et retourner le tableau (ou vecteur) résultant</p>
             <code>int[] Matrice_Vecteur(int[,] mat)</code>
             <p>Attention à tester les cas aux limites</p>
-            <p style="font-weight:600; color:var(--gray-900); margin-bottom:6px;"><span class="hl">Exemple :</span></p>
+            <p style="font-weight:600; color:var(--text); margin-bottom:6px;"><span class="hl">Exemple :</span></p>
             <p>soit mat la matrice {{1,2,3},{4,5,6}, {7,8,9}}, le résultat est le suivant :<br>{1,2,3,4,5,6,7,8,9}</p>
             <p style="margin-top:14px;"><span class="hl">Pas de Main, ni d'affichage</span></p>
           </div>
@@ -547,7 +549,7 @@
           </select>
           <button class="btn btn-square">−</button>
           <button class="btn btn-square">+</button>
-          <button class="btn btn-square">⋮</button>
+          <button class="btn btn-square">⋯</button>
         </div>
         <div class="editor-area">
           <div class="gutter" id="gutter">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20</div>
@@ -573,7 +575,7 @@
               <div class="tool">B</div>
               <div class="tool">I</div>
               <div class="tool">U</div>
-              <div class="tool">A</div>
+              <div class="tool active">A</div>
               <div class="tool">≡</div>
               <div class="tool">1.</div>
             </div>
