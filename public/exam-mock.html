@@ -3,34 +3,36 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Examen - Mock UI</title>
+    <title>Examen - Schooding</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
       :root {
-        --green: #2a7e1f;
-        --green-hover: #349224;
-        --badge: rgba(0,0,0,.25);
-        --blue: #1677ff;
-        --bg: #f3f4f6;
-        --card: #ffffff;
-        --text: #111827;
-        --muted: #6b7280;
-        --gutter: #e5e7eb;
-        --shadow: 0 1px 2px rgba(0,0,0,.06), 0 4px 10px rgba(0,0,0,.08);
+        --green-700: #2a7e1f;
+        --green-600: #349224;
+        --blue-600: #1677ff;
         --blue-rail: #1e88e5;
-        --danger: #ef4444;
+        --red-500: #ef4444;
+        --gray-50: #fafafa;
+        --gray-100: #f3f4f6;
+        --gray-200: #e5e7eb;
+        --gray-400: #9ca3af;
+        --gray-600: #6b7280;
+        --gray-900: #111827;
+        --highlight: #ffeb3b;
+        --shadow: 0 1px 2px rgba(0,0,0,.06), 0 4px 10px rgba(0,0,0,.08);
       }
 
       * { box-sizing: border-box; }
+      
       html, body {
         height: 100%;
         margin: 0;
         font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
         font-size: 14px;
-        color: var(--text);
-        background: var(--bg);
+        color: var(--gray-900);
+        background: var(--gray-100);
         min-width: 1280px;
       }
 
@@ -39,7 +41,7 @@
         position: sticky;
         top: 0;
         z-index: 50;
-        background: var(--green);
+        background: var(--green-700);
         color: #fff;
         height: 60px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -53,7 +55,7 @@
       }
       .tabs {
         display: flex;
-        gap: 10px;
+        gap: 8px;
         align-items: center;
         overflow-x: auto;
         flex: 1;
@@ -62,30 +64,41 @@
       .tabs::-webkit-scrollbar { display: none; }
       .tab {
         background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.25);
+        border: 1px solid rgba(255,255,255,0.2);
         color: #fff;
-        padding: 6px 12px;
-        border-radius: 6px;
+        padding: 8px 12px;
+        border-radius: 8px;
         display: inline-flex;
         align-items: center;
-        gap: 6px;
+        gap: 8px;
         font-weight: 700;
         font-size: 13px;
         line-height: 1;
         cursor: pointer;
         white-space: nowrap;
+        transition: background 0.2s;
       }
-      .tab:hover { background: var(--green-hover); }
+      .tab:hover { background: var(--green-600); border-color: transparent; }
+      .tab-icon { font-size: 12px; opacity: 0.8; }
       .badge {
-        background: var(--badge);
-        padding: 2px 5px;
-        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 18px;
+        padding: 0 6px;
+        border-radius: 999px;
         font-weight: 700;
-        font-size: 11px;
+        font-size: 12px;
+        background: rgba(0,0,0,.25);
+        color: #fff;
       }
       .status {
+        display: flex;
+        align-items: center;
+        gap: 6px;
         font-weight: 600;
         font-size: 14px;
+        color: #fff;
         white-space: nowrap;
       }
 
@@ -95,108 +108,86 @@
         grid-template-columns: 300px 1fr 360px;
         gap: 12px;
         padding: 12px 16px 16px;
-        min-width: 1280px;
       }
 
       /* Colonne gauche */
       .left-col {
+        width: 300px;
         display: flex;
         flex-direction: column;
-        gap: 0;
+        gap: 12px;
       }
-      .enonce-wrapper {
-        position: relative;
-      }
-      .enonce-pill {
-        position: absolute;
-        left: -16px;
-        top: 12px;
-        width: 36px;
-        height: 72px;
-        background: var(--blue-rail);
-        color: #fff;
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: var(--shadow);
-      }
-      .enonce-pill span {
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
-        font-weight: 800;
-        font-size: 13px;
-        letter-spacing: 0.5px;
-      }
-
-      /* Cartes */
-      .panel {
-        background: var(--card);
-        border: 1px solid var(--gutter);
+      
+      /* Carte Énoncé */
+      .enonce-card {
+        background: #fff;
+        border: 1px solid var(--gray-200);
         border-radius: 8px;
         box-shadow: var(--shadow);
         overflow: hidden;
       }
-      .panel-head {
+      .enonce-head {
+        height: 44px;
         background: var(--blue-rail);
         color: #fff;
-        height: 44px;
         padding: 0 16px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         font-weight: 700;
         font-size: 15px;
+        border-radius: 8px 8px 0 0;
       }
       .menu-btn {
         width: 28px;
         height: 28px;
         background: #fff;
-        color: #333;
-        border-radius: 6px;
+        color: var(--blue-rail);
+        border-radius: 8px;
         display: grid;
         place-items: center;
         cursor: pointer;
         font-size: 18px;
         font-weight: 700;
-        line-height: 1;
       }
-      .panel-body {
-        padding: 16px 20px 18px;
+      .enonce-body {
+        padding: 16px 16px 20px;
       }
-      .title {
+      .enonce-title {
         font-weight: 700;
         font-size: 16px;
-        margin: 0 0 10px;
-        color: var(--text);
+        margin: 0 0 12px;
+        color: var(--gray-900);
       }
-      .panel-body p {
-        margin: 0 0 10px;
-        color: var(--muted);
+      .enonce-body p {
+        margin: 0 0 12px;
+        color: var(--gray-600);
         line-height: 1.5;
       }
-      .panel-body code {
+      .enonce-body code {
         display: block;
         background: #fafbfc;
         border: 1px solid #eef2f6;
         padding: 8px 10px;
         border-radius: 6px;
-        font-family: Consolas, Monaco, monospace;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
         font-size: 13px;
-        margin: 10px 0;
+        margin: 12px 0;
+        color: var(--gray-900);
       }
       .hl {
-        background: #ffeb3b;
+        display: inline-block;
+        background: var(--highlight);
         padding: 2px 4px;
         border-radius: 2px;
-        display: inline;
+        line-height: 1.2;
         font-weight: 600;
       }
 
       /* Éditeur */
       .editor-card {
-        background: var(--card);
-        border: 1px solid var(--gutter);
+        background: #fff;
+        border: 1px solid var(--gray-200);
         border-radius: 8px;
         box-shadow: var(--shadow);
         display: flex;
@@ -206,9 +197,9 @@
         overflow: hidden;
       }
       .editor-toolbar {
-        background: var(--bg);
-        border-bottom: 1px solid var(--gutter);
         height: 48px;
+        background: var(--gray-100);
+        border-bottom: 1px solid var(--gray-200);
         padding: 0 12px;
         display: flex;
         align-items: center;
@@ -217,23 +208,44 @@
       }
       .btn {
         background: #fff;
-        border: 1px solid var(--gutter);
-        color: var(--text);
-        padding: 6px 12px;
-        border-radius: 6px;
+        border: 1px solid var(--gray-200);
+        color: var(--gray-900);
+        padding: 8px 12px;
+        border-radius: 8px;
         font-weight: 600;
         font-size: 13px;
         cursor: pointer;
+        transition: all 0.2s;
       }
-      .btn-cyan {
-        background: #e0f2fe;
-        color: #0ea5e9;
-        border-color: #bae6fd;
+      .btn:hover { background: var(--gray-50); }
+      .btn:focus { outline: none; box-shadow: 0 0 0 3px rgba(22,119,255,.35); }
+      .btn-snippets {
+        background: #e6f0ff;
+        color: #1e63d0;
+        border-color: #d0e3ff;
       }
-      .btn-danger {
-        background: var(--danger);
-        border-color: #dc2626;
+      .btn-add {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        display: grid;
+        place-items: center;
+        background: #00bcd4;
         color: #fff;
+        border-color: #00acc1;
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .btn-save {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        display: grid;
+        place-items: center;
+        background: var(--red-500);
+        color: #fff;
+        border-color: #dc2626;
+        font-size: 18px;
       }
       .btn-square {
         width: 32px;
@@ -244,14 +256,25 @@
         font-size: 16px;
       }
       .toolbar-spacer { flex: 1; }
+      .toolbar-label {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--gray-600);
+        padding: 4px 8px;
+        background: var(--gray-100);
+        border-radius: 4px;
+      }
       .select {
-        height: 32px;
-        border: 1px solid var(--gutter);
-        border-radius: 6px;
+        height: 36px;
+        border: 1px solid var(--gray-200);
+        border-radius: 8px;
         padding: 0 10px;
         background: #fff;
         font-size: 13px;
+        color: var(--gray-900);
+        cursor: pointer;
       }
+      .select:focus { outline: none; box-shadow: 0 0 0 3px rgba(22,119,255,.35); }
 
       .editor-area {
         flex: 1;
@@ -261,10 +284,10 @@
         overflow: hidden;
       }
       .gutter {
-        background: #fafafa;
-        border-right: 1px solid var(--gutter);
-        color: #9aa3af;
-        font-family: Consolas, Monaco, monospace;
+        background: #f7f7f9;
+        border-right: 1px solid var(--gray-200);
+        color: var(--gray-400);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
         font-size: 14px;
         padding: 12px 8px;
         line-height: 1.5;
@@ -273,43 +296,57 @@
         overflow: hidden;
       }
       .code {
-        font-family: Consolas, Monaco, monospace;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
         font-size: 14px;
         padding: 12px;
         line-height: 1.5;
         white-space: pre;
         overflow: auto;
-        color: var(--text);
+        color: var(--gray-900);
       }
+      .code:focus { outline: none; background: #f2f6ff; }
       .editor-bottom {
         height: 44px;
-        background: var(--bg);
-        border-top: 1px solid var(--gutter);
+        background: var(--gray-100);
+        border-top: 1px solid var(--gray-200);
         flex-shrink: 0;
       }
       .execute {
         position: absolute;
         left: 12px;
         bottom: 56px;
-        background: var(--blue);
+        height: 36px;
+        background: var(--blue-600);
         color: #fff;
         border: none;
         border-radius: 8px;
-        padding: 8px 16px;
+        padding: 0 14px;
         font-weight: 700;
         font-size: 14px;
-        box-shadow: 0 4px 14px rgba(23,120,242,0.3);
+        box-shadow: 0 4px 14px rgba(22,119,255,0.3);
         cursor: pointer;
         display: inline-flex;
         align-items: center;
         gap: 8px;
         z-index: 10;
+        transition: background 0.2s;
+      }
+      .execute:hover { background: #0d6efd; }
+      .execute-icon {
+        width: 20px;
+        height: 20px;
+        background: rgba(0,0,0,0.2);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 12px;
       }
 
       /* Chat */
       .chat-card {
-        background: var(--card);
-        border: 1px solid var(--gutter);
+        width: 360px;
+        background: #fff;
+        border: 1px solid var(--gray-200);
         border-radius: 8px;
         box-shadow: var(--shadow);
         display: flex;
@@ -318,15 +355,16 @@
         overflow: hidden;
       }
       .chat-head {
-        background: var(--green);
-        color: #fff;
         height: 44px;
+        background: var(--green-700);
+        color: #fff;
         padding: 0 16px;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         font-weight: 700;
         font-size: 15px;
+        border-radius: 8px 8px 0 0;
         flex-shrink: 0;
       }
       .icon-bubble {
@@ -349,56 +387,74 @@
       .chat-body {
         flex: 1;
         background: #fff;
+        border-left: 1px solid var(--gray-200);
+        border-right: 1px solid var(--gray-200);
         overflow-y: auto;
         padding: 12px;
       }
       .chat-footer {
-        border-top: 1px solid var(--gutter);
-        background: var(--bg);
-        padding: 10px;
-        display: flex;
-        gap: 10px;
+        background: #fff;
+        border: 1px solid var(--gray-200);
+        border-top: none;
+        border-radius: 0 0 8px 8px;
+        padding: 8px;
+        display: grid;
+        grid-template-columns: 1fr 44px;
+        align-items: end;
+        gap: 8px;
         flex-shrink: 0;
       }
       .chat-controls {
-        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
       }
       .toolbar {
         display: flex;
         gap: 6px;
-        margin-bottom: 8px;
       }
       .tool {
-        background: #fff;
-        border: 1px solid var(--gutter);
         width: 32px;
         height: 32px;
-        border-radius: 6px;
+        background: #fff;
+        border: 1px solid var(--gray-200);
+        border-radius: 8px;
         display: grid;
         place-items: center;
         cursor: pointer;
         font-weight: 700;
         font-size: 13px;
+        color: var(--gray-900);
+        transition: background 0.2s;
       }
+      .tool:hover { background: var(--gray-50); }
       .input {
+        width: 100%;
         background: #fff;
-        border: 1px solid var(--gutter);
+        border: 1px solid var(--gray-200);
         border-radius: 8px;
         padding: 8px 12px;
-        width: 100%;
         font-size: 14px;
+        color: var(--gray-900);
+        font-family: inherit;
+        resize: none;
       }
+      .input:focus { outline: none; box-shadow: 0 0 0 3px rgba(22,119,255,.35); }
+      .input::placeholder { color: var(--gray-400); }
       .drawer {
-        background: #0d6efd;
-        color: #fff;
         width: 44px;
-        border-radius: 8px;
+        height: 56px;
+        background: #2a66ff;
+        color: #fff;
+        border-radius: 8px 0 0 8px;
         display: grid;
         place-items: center;
         cursor: pointer;
-        font-size: 20px;
+        font-size: 24px;
         font-weight: 700;
+        transition: background 0.2s;
       }
+      .drawer:hover { background: #1e54e6; }
 
       /* Bouton flottant */
       .float-btn {
@@ -408,7 +464,7 @@
         width: 42px;
         height: 42px;
         border-radius: 50%;
-        background: var(--danger);
+        background: var(--red-500);
         color: #fff;
         border: none;
         font-weight: 800;
@@ -416,7 +472,9 @@
         box-shadow: 0 4px 12px rgba(239,68,68,0.4);
         cursor: pointer;
         z-index: 100;
+        transition: background 0.2s;
       }
+      .float-btn:hover { background: #dc2626; }
     </style>
   </head>
   <body>
@@ -424,20 +482,24 @@
     <header class="header">
       <div class="header-inner">
         <div class="tabs">
-          <div class="tab">&lt;&gt; Instructions et Aide</div>
-          <div class="tab">&lt;&gt; Ex 1 <span class="badge">1pts</span></div>
-          <div class="tab">&lt;&gt; Ex 2 <span class="badge">1pts</span></div>
-          <div class="tab">&lt;&gt; Ex 3 <span class="badge">1pts</span></div>
-          <div class="tab">&lt;&gt; Ex 4 <span class="badge">1pts</span></div>
-          <div class="tab">&lt;&gt; Ex 5 <span class="badge">1pts</span></div>
-          <div class="tab">&lt;&gt; Ex 6 <span class="badge">1pts</span></div>
-          <div class="tab">&lt;&gt; Ex 7 <span class="badge">1pts</span></div>
-          <div class="tab">&lt;&gt; Ex 8 <span class="badge">1pts</span></div>
-          <div class="tab">&lt;&gt; Ex 9 <span class="badge">1pts</span></div>
-          <div class="tab">&lt;&gt; Ex 10 <span class="badge">1pts</span></div>
-          <div class="tab">&lt;&gt; Ex 11 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Instructions et Aide</div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 1 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 2 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 3 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 4 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 5 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 6 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 7 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 8 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 9 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 10 <span class="badge">1pts</span></div>
+          <div class="tab"><span class="tab-icon">&lt;&gt;</span> Ex 11 <span class="badge">1pts</span></div>
         </div>
-        <div class="status">Adrien Lassus* — Termine dans : 1h 30m 32s</div>
+        <div class="status">
+          <span>Adrien Lassus*</span>
+          <span>—</span>
+          <span>Termine dans : 1h 30m 32s</span>
+        </div>
       </div>
     </header>
 
@@ -445,22 +507,19 @@
     <main class="layout">
       <!-- Colonne gauche: Énoncé -->
       <section class="left-col">
-        <div class="enonce-wrapper">
-          <div class="enonce-pill"><span>Énoncé</span></div>
-          <div class="panel">
-            <div class="panel-head">
-              <span>Énoncé</span>
-              <span class="menu-btn">⋮</span>
-            </div>
-            <div class="panel-body">
-              <div class="title">Transformation Matrice vers Vecteur</div>
-              <p>Ecrire la méthode qui consiste à traduire une matrice en un tableau (ou vecteur) et retourner le tableau (ou vecteur) résultant</p>
-              <code>int[] Matrice_Vecteur(int[,] mat)</code>
-              <p>Attention à tester les cas aux limites</p>
-              <p style="font-weight:600; color:var(--text);">Exemple :</p>
-              <p>soit mat la matrice {{1,2,3},{4,5,6}, {7,8,9}}, le résultat est le suivant :<br>{1,2,3,4,5,6,7,8,9}</p>
-              <p style="margin-top:12px;"><span class="hl">Pas de Main, ni d'affichage</span></p>
-            </div>
+        <div class="enonce-card">
+          <div class="enonce-head">
+            <span>Énoncé</span>
+            <span class="menu-btn">⋮</span>
+          </div>
+          <div class="enonce-body">
+            <div class="enonce-title">Transformation Matrice vers Vecteur</div>
+            <p>Ecrire la méthode qui consiste à traduire une matrice en un tableau (ou vecteur) et retourner le tableau (ou vecteur) résultant</p>
+            <code>int[] Matrice_Vecteur(int[,] mat)</code>
+            <p>Attention à tester les cas aux limites</p>
+            <p style="font-weight:600; color:var(--gray-900); margin-bottom:6px;">Exemple : <span class="hl"> </span></p>
+            <p>soit mat la matrice {{1,2,3},{4,5,6}, {7,8,9}}, le résultat est le suivant :<br>{1,2,3,4,5,6,7,8,9}</p>
+            <p style="margin-top:14px;"><span class="hl">Pas de Main, ni d'affichage</span></p>
           </div>
         </div>
       </section>
@@ -468,11 +527,11 @@
       <!-- Colonne centrale: Éditeur -->
       <section class="editor-card">
         <div class="editor-toolbar">
-          <button class="btn btn-cyan">Snippets ▾</button>
-          <button class="btn btn-square btn-cyan">+</button>
-          <button class="btn btn-square btn-danger">💾</button>
+          <button class="btn btn-snippets">Snippets ▾</button>
+          <button class="btn btn-add">+</button>
+          <button class="btn btn-save">💾</button>
           <div class="toolbar-spacer"></div>
-          <label style="font-weight:600; font-size:13px;">Theme</label>
+          <span class="toolbar-label">Theme</span>
           <select class="select">
             <option>Eclipse ▾</option>
             <option>Monokai</option>
@@ -487,7 +546,10 @@
           <div class="code" id="code" contenteditable="true" spellcheck="false"></div>
         </div>
         <div class="editor-bottom"></div>
-        <button class="execute">▶️ Exécuter</button>
+        <button class="execute">
+          <span class="execute-icon">▶</span>
+          Exécuter
+        </button>
       </section>
 
       <!-- Colonne droite: Chat -->
