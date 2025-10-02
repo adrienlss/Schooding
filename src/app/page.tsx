@@ -122,18 +122,37 @@ export default function Home() {
           <div className="chat-body"></div>
           <div className="chat-footer">
             <div className="format-tools">
+              <button className="format-btn magic">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7.5 5.6L5 7l1.4-2.5L5 2l2.5 1.4L10 2 8.6 4.5 10 7 7.5 5.6zm12 9.8L22 14l-1.4 2.5L22 19l-2.5-1.4L17 19l1.4-2.5L17 14l2.5 1.4zM22 2l-2.5 1.4L17 2l1.4 2.5L17 7l2.5-1.4L22 7l-1.4-2.5L22 2zM7.5 18.4L5 17l1.4 2.5L5 22l2.5-1.4L10 22 8.6 19.5 10 17 7.5 18.4z"/>
+                </svg>
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 10l5 5 5-5z"/>
+                </svg>
+              </button>
               <button className="format-btn">B</button>
               <button className="format-btn">I</button>
               <button className="format-btn">U</button>
-              <button className="format-btn active">A</button>
-              <button className="format-btn">=</button>
+              <button className="format-btn active">
+                A
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 10l5 5 5-5z"/>
+                </svg>
+              </button>
+              <button className="format-btn">•</button>
               <button className="format-btn">1.</button>
             </div>
-            <input className="chat-input" placeholder="Tapez votre message..." />
-            <div className="flex items-center gap-2">
+            <div className="input-container">
+              <textarea className="chat-input" placeholder="Tapez votre message..." rows="1"></textarea>
+              <div className="resize-handle"></div>
+            </div>
+            <div className="send-container">
+              <button className="send-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+              </button>
               <button className="emoji-btn">🙂</button>
-              <button className="send-btn">C</button>
-              <button className="drawer-btn">›</button>
             </div>
           </div>
         </div>
