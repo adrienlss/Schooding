@@ -11,8 +11,8 @@
       :root { --green:#2a7e1f; --green-hover:#39a52a; --badge:#1e6915; --bg:#fff; --muted:#333; }
       *{ box-sizing:border-box }
       body{ margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#111; background:#fff; min-width:1280px; }
-      .header{ position:sticky; top:0; z-index:10; background:var(--green); color:#fff; height:60px; border-top:1px solid #666; border-bottom:1px solid #ccc; }
-      .header-inner{ margin:0; padding:0; display:flex; align-items:stretch; justify-content:space-between; gap:0; height:100%; }
+      .header{ position:sticky; top:0; z-index:10; background:var(--green); color:#fff; height:60px; border-top:1px solid #666; border-bottom:1px solid #ccc; width:100%; }
+      .header-inner{ margin:0; padding:0; display:flex; align-items:stretch; justify-content:space-between; gap:0; height:100%; width:100%; }
       .tabs{ display:flex; align-items:stretch; overflow-x:auto; white-space:nowrap; scrollbar-width:none; flex:1 1 auto; }
       .tabs::-webkit-scrollbar{ display:none }
       .nav-item{ color:#fff; text-decoration:none; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:8px 12px; transition:background 0.2s; position:relative; }
@@ -23,7 +23,7 @@
       .nav-line-1{ font-size:12px; font-weight:600; line-height:1; }
       .nav-line-2{ font-size:12px; opacity:0.9; line-height:1; margin-top:2px; }
       .save-icon{ position:absolute; right:4px; top:4px; font-size:12px; }
-      .status{ font-weight:700; }
+      .status{ font-weight:700; display:flex; flex-direction:column; align-items:flex-end; justify-content:center; padding:8px 16px; white-space:nowrap; }
       .container{ max-width:1100px; margin:18px auto; padding:0 16px 48px; }
       h1{ font-size:36px; margin:22px 0 12px; }
       ul{ margin:12px 0 22px 22px; color:#222; line-height:1.7; }
@@ -79,7 +79,10 @@
             <span class="nav-line-2">1pts</span>
           </a>
         </div>
-        <div class="status">Adrien Lassus* — Termine dans : 1h 46m</div>
+        <div class="status">
+          <span>Adrien Lassus*</span>
+          <span>Termine dans : 1h 46m</span>
+        </div>
       </div>
     </header>
     <div class="container">

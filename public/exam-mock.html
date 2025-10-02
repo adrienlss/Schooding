@@ -51,6 +51,7 @@
         border-top: 1px solid #666;
         border-bottom: 1px solid #ccc;
         box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+        width: 100%;
       }
       .header-inner {
         display: flex;
@@ -58,6 +59,7 @@
         justify-content: space-between;
         height: 100%;
         padding: 0;
+        width: 100%;
       }
       .tabs {
         display: flex;
@@ -108,12 +110,15 @@
       }
       .status {
         display: flex;
-        align-items: center;
-        gap: 6px;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 2px;
         font-weight: 600;
-        font-size: 14px;
+        font-size: 12px;
         color: #fff;
         white-space: nowrap;
+        padding: 8px 16px;
       }
 
       /* Layout 3 colonnes */
@@ -550,7 +555,8 @@
           </a>
         </div>
         <div class="status">
-          <span>Adrien Lassus* — Termine dans : 1h 30m 32s</span>
+          <span>Adrien Lassus*</span>
+          <span>Termine dans : 1h 30m 32s</span>
         </div>
       </div>
     </header>
