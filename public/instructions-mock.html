@@ -11,12 +11,18 @@
       :root { --green:#2a7e1f; --green-hover:#39a52a; --badge:#1e6915; --bg:#fff; --muted:#333; }
       *{ box-sizing:border-box }
       body{ margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#111; background:#fff; min-width:1280px; }
-      .header{ position:sticky; top:0; z-index:10; background:var(--green); color:#fff; height:60px; }
-      .header-inner{ margin:0; padding:10px 24px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
-      .tabs{ display:flex; gap:8px; align-items:center; overflow-x:auto; white-space:nowrap; scrollbar-width:none; flex:1 1 auto; }
+      .header{ position:sticky; top:0; z-index:10; background:var(--green); color:#fff; height:60px; border-top:1px solid #666; border-bottom:1px solid #ccc; }
+      .header-inner{ margin:0; padding:0; display:flex; align-items:stretch; justify-content:space-between; gap:0; height:100%; }
+      .tabs{ display:flex; align-items:stretch; overflow-x:auto; white-space:nowrap; scrollbar-width:none; flex:1 1 auto; }
       .tabs::-webkit-scrollbar{ display:none }
-      .tab{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.25); color:#fff; padding:6px 10px; border-radius:6px; font-weight:700; display:inline-flex; align-items:center; gap:8px; }
-      .badge{ background:#1e6915; padding:2px 6px; border-radius:999px; font-size:12px; font-weight:700; }
+      .nav-item{ color:#fff; text-decoration:none; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:8px 12px; transition:background 0.2s; position:relative; }
+      .instructions-item{ padding:8px 16px; }
+      .exercise-item{ padding:8px 12px; }
+      .nav-item:hover{ background:#1f3d07; }
+      .nav-item.active{ background:#1f3d07; }
+      .nav-line-1{ font-size:12px; font-weight:600; line-height:1; }
+      .nav-line-2{ font-size:12px; opacity:0.9; line-height:1; margin-top:2px; }
+      .save-icon{ position:absolute; right:4px; top:4px; font-size:12px; }
       .status{ font-weight:700; }
       .container{ max-width:1100px; margin:18px auto; padding:0 16px 48px; }
       h1{ font-size:36px; margin:22px 0 12px; }
@@ -31,18 +37,47 @@
     <header class="header">
       <div class="header-inner">
         <div class="tabs">
-          <div class="tab">Instructions et Aide</div>
-          <div class="tab">Ex 1 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 2 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 3 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 4 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 5 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 6 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 7 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 8 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 9 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 10 <span class="badge">1pts</span></div>
-          <div class="tab">Ex 11 <span class="badge">1pts</span></div>
+          <a href="/instructions" class="nav-item instructions-item active">
+            <span class="nav-line-1">Instructions</span>
+            <span class="nav-line-2">et Aide</span>
+          </a>
+          <a href="/ex1" class="nav-item exercise-item">
+            <span class="nav-line-1">Ex 1</span>
+            <span class="nav-line-2">1pts</span>
+            <span class="save-icon">💾</span>
+          </a>
+          <a href="/ex2" class="nav-item exercise-item">
+            <span class="nav-line-1">Ex 2</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
+          <a href="/ex3" class="nav-item exercise-item">
+            <span class="nav-line-1">Ex 3</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
+          <a href="/ex4" class="nav-item exercise-item">
+            <span class="nav-line-1">Ex 4</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
+          <a href="/ex5" class="nav-item exercise-item">
+            <span class="nav-line-1">Ex 5</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
+          <a href="/ex6" class="nav-item exercise-item">
+            <span class="nav-line-1">Ex 6</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
+          <a href="/ex7" class="nav-item exercise-item">
+            <span class="nav-line-1">Ex 7</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
+          <a href="/ex8" class="nav-item exercise-item">
+            <span class="nav-line-1">Ex 8</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
+          <a href="/ex9" class="nav-item exercise-item">
+            <span class="nav-line-1">Ex 9</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
         </div>
         <div class="status">Adrien Lassus* — Termine dans : 1h 46m</div>
       </div>

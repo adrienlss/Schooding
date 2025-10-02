@@ -48,55 +48,63 @@
         background: var(--green-700);
         color: #fff;
         height: 60px;
+        border-top: 1px solid #666;
+        border-bottom: 1px solid #ccc;
         box-shadow: 0 2px 0 rgba(0,0,0,0.05);
       }
       .header-inner {
         display: flex;
-        align-items: center;
+        align-items: stretch;
         justify-content: space-between;
         height: 100%;
-        padding: 0 24px;
+        padding: 0;
       }
       .tabs {
         display: flex;
-        gap: 12px;
-        align-items: center;
+        align-items: stretch;
         overflow-x: auto;
         flex: 1;
         scrollbar-width: none;
       }
       .tabs::-webkit-scrollbar { display: none; }
-      .tab {
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.15);
+      .nav-item {
         color: #fff;
-        padding: 6px 10px;
-        border-radius: 10px;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 600;
-        font-size: 13px;
-        line-height: 1;
-        cursor: pointer;
-        white-space: nowrap;
-        transition: background 0.2s;
         text-decoration: none;
-      }
-      .tab:hover { background: var(--green-650); border-color: transparent; color: #fff; }
-      .tab:visited { color: #fff; }
-      .tab-icon { font-size: 14px; line-height: 1; }
-      .badge {
-        display: inline-flex;
+        display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 18px;
-        padding: 0 6px;
-        border-radius: 999px;
-        font-weight: 600;
+        padding: 8px 12px;
+        transition: background 0.2s;
+        position: relative;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .instructions-item {
+        padding: 8px 16px;
+      }
+      .exercise-item {
+        padding: 8px 12px;
+      }
+      .nav-item:hover { background: #1f3d07; }
+      .nav-item.active { background: #1f3d07; }
+      .nav-item:visited { color: #fff; }
+      .nav-line-1 {
         font-size: 12px;
-        background: var(--tab-badge);
-        color: #fff;
+        font-weight: 600;
+        line-height: 1;
+      }
+      .nav-line-2 {
+        font-size: 12px;
+        opacity: 0.9;
+        line-height: 1;
+        margin-top: 2px;
+      }
+      .save-icon {
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        font-size: 12px;
       }
       .status {
         display: flex;
@@ -499,18 +507,47 @@
     <header class="header">
       <div class="header-inner">
         <div class="tabs">
-          <a href="/instructions" class="tab" target="_parent"><span class="tab-icon">&lt;&gt;</span> Instructions et Aide</a>
-          <a href="/ex1" class="tab" target="_parent"><span class="tab-icon">&lt;&gt;</span> Ex 1 <span class="badge">1pts</span></a>
-          <a href="/ex2" class="tab" target="_parent"><span class="tab-icon">&lt;&gt;</span> Ex 2 <span class="badge">1pts</span></a>
-          <a href="/ex3" class="tab" target="_parent"><span class="tab-icon">&lt;&gt;</span> Ex 3 <span class="badge">1pts</span></a>
-          <a href="/ex4" class="tab" target="_parent"><span class="tab-icon">&lt;&gt;</span> Ex 4 <span class="badge">1pts</span></a>
-          <a href="/ex5" class="tab" target="_parent"><span class="tab-icon">&lt;&gt;</span> Ex 5 <span class="badge">1pts</span></a>
-          <a href="/ex6" class="tab" target="_parent"><span class="tab-icon">&lt;&gt;</span> Ex 6 <span class="badge">1pts</span></a>
-          <a href="/ex7" class="tab" target="_parent"><span class="tab-icon">&lt;&gt;</span> Ex 7 <span class="badge">1pts</span></a>
-          <a href="/ex8" class="tab" target="_parent"><span class="tab-icon">&lt;&gt;</span> Ex 8 <span class="badge">1pts</span></a>
-          <a href="/ex9" class="tab" target="_parent"><span class="tab-icon">&lt;&gt;</span> Ex 9 <span class="badge">1pts</span></a>
-          <a href="/ex10" class="tab" target="_parent"><span class="tab-icon">&lt;&gt;</span> Ex 10 <span class="badge">1pts</span></a>
-          <a href="/ex11" class="tab" target="_parent"><span class="tab-icon">&lt;&gt;</span> Ex 11 <span class="badge">1pts</span></a>
+          <a href="/instructions" class="nav-item instructions-item" target="_parent">
+            <span class="nav-line-1">Instructions</span>
+            <span class="nav-line-2">et Aide</span>
+          </a>
+          <a href="/ex1" class="nav-item exercise-item active" target="_parent">
+            <span class="nav-line-1">Ex 1</span>
+            <span class="nav-line-2">1pts</span>
+            <span class="save-icon">💾</span>
+          </a>
+          <a href="/ex2" class="nav-item exercise-item" target="_parent">
+            <span class="nav-line-1">Ex 2</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
+          <a href="/ex3" class="nav-item exercise-item" target="_parent">
+            <span class="nav-line-1">Ex 3</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
+          <a href="/ex4" class="nav-item exercise-item" target="_parent">
+            <span class="nav-line-1">Ex 4</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
+          <a href="/ex5" class="nav-item exercise-item" target="_parent">
+            <span class="nav-line-1">Ex 5</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
+          <a href="/ex6" class="nav-item exercise-item" target="_parent">
+            <span class="nav-line-1">Ex 6</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
+          <a href="/ex7" class="nav-item exercise-item" target="_parent">
+            <span class="nav-line-1">Ex 7</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
+          <a href="/ex8" class="nav-item exercise-item" target="_parent">
+            <span class="nav-line-1">Ex 8</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
+          <a href="/ex9" class="nav-item exercise-item" target="_parent">
+            <span class="nav-line-1">Ex 9</span>
+            <span class="nav-line-2">1pts</span>
+          </a>
         </div>
         <div class="status">
           <span>Adrien Lassus* — Termine dans : 1h 30m 32s</span>
