@@ -63,7 +63,7 @@ export default function Home() {
             <button className="toolbar-btn plus">+</button>
             <button className="toolbar-btn save">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/>
+                <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z"/>
               </svg>
             </button>
             <span className="toolbar-label">Theme</span>
@@ -115,6 +115,7 @@ export default function Home() {
           <div className="chat-header">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+              <path d="M7 9h10v1H7zm0 3h8v1H7zm0 3h6v1H7z" fill="white"/>
             </svg>
             <span>Chat Enseignant</span>
           </div>

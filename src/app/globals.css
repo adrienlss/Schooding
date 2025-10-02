@@ -40,7 +40,7 @@ body {
 /* Layout principal */
 #layout {
   display: grid;
-  grid-template-columns: 300px 1fr 360px;
+  grid-template-columns: 400px 1fr 450px;
   gap: 12px;
   padding: 12px 16px;
   min-width: 1280px;
@@ -174,15 +174,19 @@ body {
 }
 
 .toolbar-btn.snippets {
-  background: #e7f0ff;
-  color: #1e3a8a;
+  background: #20b2aa;
+  color: #fff;
   font-weight: 600;
+  border-radius: 8px 0 0 8px;
+  border-right: none;
 }
 
 .toolbar-btn.plus {
   width: 32px;
-  background: #00bcd4;
+  background: #20b2aa;
   color: #fff;
+  border-radius: 0 8px 8px 0;
+  border-left: none;
 }
 
 .toolbar-btn.save {
@@ -200,11 +204,12 @@ body {
 }
 
 .toolbar-label {
-  background: #f1f5f9;
+  background: transparent;
   padding: 0 8px;
   border-radius: 4px;
-  font-size: 12px;
-  color: var(--muted);
+  font-size: 14px;
+  color: var(--text);
+  font-weight: normal;
 }
 
 .toolbar-select {
