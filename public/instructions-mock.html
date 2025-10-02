@@ -11,7 +11,7 @@
       :root { --green:#2a7e1f; --green-hover:#39a52a; --badge:#1e6915; --bg:#fff; --muted:#333; }
       *{ box-sizing:border-box }
       body{ margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#111; background:#fff; min-width:1280px; }
-      .header{ position:sticky; top:0; z-index:10; background:var(--green); color:#fff; height:60px; border-top:1px solid #666; border-bottom:1px solid #ccc; width:100%; }
+      .header{ position:fixed; top:0; left:0; z-index:1000; background:var(--green); color:#fff; height:60px; border-top:1px solid #666; border-bottom:1px solid #ccc; width:100%; }
       .header-inner{ margin:0; padding:0; display:flex; align-items:stretch; justify-content:space-between; gap:0; height:100%; width:100%; }
       .tabs{ display:flex; align-items:stretch; overflow-x:auto; white-space:nowrap; scrollbar-width:none; flex:1 1 auto; }
       .tabs::-webkit-scrollbar{ display:none }
@@ -24,7 +24,7 @@
       .nav-line-2{ font-size:12px; opacity:0.9; line-height:1; margin-top:2px; }
       .save-icon{ position:absolute; right:4px; top:4px; font-size:12px; }
       .status{ font-weight:700; display:flex; flex-direction:column; align-items:flex-end; justify-content:center; padding:8px 16px; white-space:nowrap; }
-      .container{ max-width:1100px; margin:18px auto; padding:0 16px 48px; }
+      .container{ max-width:1100px; margin:18px auto; padding:0 16px 48px; margin-top:78px; }
       h1{ font-size:36px; margin:22px 0 12px; }
       ul{ margin:12px 0 22px 22px; color:#222; line-height:1.7; }
       .alert{ background:#f8d7da; color:#7b1c23; border:1px solid #f1b4bb; padding:14px 16px; border-radius:6px; font-weight:700; }
