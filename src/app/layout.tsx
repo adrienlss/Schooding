@@ -31,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black`} style={{ margin: 0, padding: 0 }}>
+        <HeaderNav />
         {children}
       </body>
     </html>
