@@ -50,7 +50,7 @@ export default function Home() {
               soit mat la matrice {`{{1,2,3},{4,5,6},{7,8,9}}`}, le résultat est le suivant : {`{1,2,3,4,5,6,7,8,9}`}
             </p>
             <p>
-              <span className="mark">Pas de Main, ni d'affichage</span>
+              <span className="mark">Pas de Main, ni d&apos;affichage</span>
             </p>
           </div>
         </div>
@@ -90,8 +90,8 @@ export default function Home() {
               <div>10</div>
             </div>
             <div className="code-area">
-              <div className="line">// TO COMPLETE Vous êtes à la ligne 10</div>
-              <div className="line">//</div>
+              <div className="line">{`// TO COMPLETE Vous êtes à la ligne 10`}</div>
+              <div className="line">{`//`}</div>
               <div className="line"></div>
               <div className="line">static int[] Matrice_Vecteur(int[,] mat)</div>
               <div className="line">{`{`}</div>
