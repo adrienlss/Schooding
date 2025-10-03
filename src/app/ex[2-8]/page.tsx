@@ -37,6 +37,131 @@ export default function Placeholder() {
     setIsActive(!isActive);
   };
 
+  const getEnonceContent = (exNumber: number) => {
+    switch (exNumber) {
+      case 2:
+        return {
+          title: "Décaler les valeurs d'une matrice",
+          description: "Soit une matrice d'entiers en entrée et une valeur entière qui représente un décalage. Il vous est demandé que la matrice soit modifiée de telle manière que les valeurs de cette matrice soient décalées de manière circulaire. Vous aurez soin de tester les cas d'une matrice null ou de longueur 0 auquel cas la matrice est inchangée.",
+          signature: "void DecaleMatrice(int[,] mat, int valeur)",
+          example: "soit la matrice suivante {{1,2},{3,4}} avec un décalage de 1, on obtient alors {{4,1},{2,3}} avec un décalage de 2, on obtient alors {{3,4},{1,2}}"
+        };
+      case 3:
+        return {
+          title: "POOA2_4 Classe Mot : Attributs",
+          description: "Complétez la classe Mot avec les attributs privés suivants : Attention l'ordre et le nom des attributs sont à respecter",
+          signature: "class Mot",
+          example: "• lemot, de type string\n• categorie_grammaticale, de type string\n• definition, de type string\n• genre, de type char"
+        };
+      case 4:
+        return {
+          title: "POOA2_4 Classe Mot : Constructeur naturel",
+          description: "Ajoutez un constructeur naturel, qui prend comme paramètres, dans l'ordre, une valeur pour : lemot, categorie_grammaticale, definition, genre. Le genre du mot ne peut prendre que les valeurs f (féminin) ou m (masculin) ou n (neutre pour tous les mots non genrés) avec n comme valeur par défaut.",
+          signature: "public Mot(string lemot, string categorie_grammaticale, string definition, char genre = 'n')",
+          example: "Mot mot1 = new Mot(\"chat\", \"nom\", \"animal domestique\", 'm');\nMot mot2 = new Mot(\"maison\", \"nom\", \"habitation\"); // genre = 'n' par défaut"
+        };
+      default:
+        return {
+          title: "Transformation Matrice vers Vecteur",
+          description: "Ecrire la méthode qui consiste à traduire une matrice en un tableau (ou vecteur) et retourner le tableau (ou vecteur) résultant",
+          signature: "int[] Matrice_Vecteur(int[,] mat)",
+          example: "soit mat la matrice {{1,2,3},{4,5,6},{7,8,9}}, le résultat est le suivant : {1,2,3,4,5,6,7,8,9}"
+        };
+    }
+  };
+
+  const enonceContent = getEnonceContent(currentEx + 1);
+
+  const getCodeContent = (exNumber: number) => {
+    switch (exNumber) {
+      case 2:
+        return (
+          <div className="code-area">
+            <div className="line"><span className="keyword">static</span> <span className="keyword">void</span> DecaleMatrice(<span className="keyword">int</span>[,] mat, <span className="keyword">int</span> valeur)</div>
+            <div className="line">{`{`}</div>
+            <div className="line">    <span className="keyword">if</span> (mat == <span className="keyword">null</span> || mat.Length == <span className="number">0</span>) <span className="keyword">return</span>;</div>
+            <div className="line">    <span className="keyword">int</span> n = mat.Length;</div>
+            <div className="line">    <span className="keyword">int</span> r = mat.GetLength(<span className="number">0</span>), c = mat.GetLength(<span className="number">1</span>);</div>
+            <div className="line">    valeur %= n; <span className="keyword">if</span> (valeur == <span className="number">0</span>) <span className="keyword">return</span>;</div>
+            <div className="line">    <span className="keyword">int</span>[] t = <span className="keyword">new</span> <span className="keyword">int</span>[n];</div>
+            <div className="line">    <span className="keyword">for</span> (<span className="keyword">int</span> i = <span className="number">0</span>; i &lt; n; i++) t[i] = mat[i / c, i % c];</div>
+            <div className="line">    <span className="keyword">for</span> (<span className="keyword">int</span> i = <span className="number">0</span>; i &lt; n; i++) mat[i / c, i % c] = t[(i - valeur + n) % n];</div>
+            <div className="line">{`}`}</div>
+          </div>
+        );
+      case 3:
+        return (
+          <div className="code-area">
+            <div className="line"><span className="keyword">using</span> System;</div>
+            <div className="line"></div>
+            <div className="line"><span className="keyword">public</span> <span className="keyword">class</span> Mot</div>
+            <div className="line">{`{`}</div>
+            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> lemot;</div>
+            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> categorie_grammaticale;</div>
+            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> definition;</div>
+            <div className="line">    <span className="keyword">private</span> <span className="keyword">char</span> genre;</div>
+            <div className="line">{`}`}</div>
+          </div>
+        );
+      case 4:
+        return (
+          <div className="code-area">
+            <div className="line"><span className="keyword">using</span> System;</div>
+            <div className="line"></div>
+            <div className="line"><span className="keyword">public</span> <span className="keyword">class</span> Mot</div>
+            <div className="line">{`{`}</div>
+            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> lemot;</div>
+            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> categorie_grammaticale;</div>
+            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> definition;</div>
+            <div className="line">    <span className="keyword">private</span> <span className="keyword">char</span> genre;</div>
+            <div className="line"></div>
+            <div className="line">    <span className="keyword">public</span> Mot(<span className="keyword">string</span> lemot, <span className="keyword">string</span> categorie_grammaticale, <span className="keyword">string</span> definition, <span className="keyword">char</span> genre = <span className="string">'n'</span>)</div>
+            <div className="line">    {`{`}</div>
+            <div className="line">        <span className="comment">// TO COMPLETE</span></div>
+            <div className="line">    {`}`}</div>
+            <div className="line">{`}`}</div>
+          </div>
+        );
+      default:
+        return (
+          <div className="code-area">
+            <div className="line"><span className="keyword">static</span> <span className="keyword">int</span>[] Matrice_Vecteur(<span className="keyword">int</span>[,] mat)</div>
+            <div className="line">{`{`}</div>
+            <div className="line">    <span className="keyword">int</span>[] vecteur;</div>
+            <div className="line"></div>
+            <div className="line">    <span className="keyword">if</span> (mat == <span className="keyword">null</span>)</div>
+            <div className="line">    {`{`}</div>
+            <div className="line">        vecteur = <span className="keyword">null</span>;</div>
+            <div className="line">    {`}`}</div>
+            <div className="line">    <span className="keyword">else</span> <span className="keyword">if</span> (mat.Length == <span className="number">0</span>)</div>
+            <div className="line">    {`{`}</div>
+            <div className="line">        vecteur = <span className="keyword">new</span> <span className="keyword">int</span>[<span className="number">0</span>];</div>
+            <div className="line">    {`}`}</div>
+            <div className="line">    <span className="keyword">else</span></div>
+            <div className="line">    {`{`}</div>
+            <div className="line">        <span className="keyword">int</span> rows = mat.GetLength(<span className="number">0</span>);</div>
+            <div className="line">        <span className="keyword">int</span> cols = mat.GetLength(<span className="number">1</span>);</div>
+            <div className="line">        vecteur = <span className="keyword">new</span> <span className="keyword">int</span>[rows * cols];</div>
+            <div className="line"></div>
+            <div className="line">        <span className="keyword">int</span> k = <span className="number">0</span>;</div>
+            <div className="line">        <span className="keyword">for</span> (<span className="keyword">int</span> i = <span className="number">0</span>; i &lt; rows; i++)</div>
+            <div className="line">        {`{`}</div>
+            <div className="line">            <span className="keyword">for</span> (<span className="keyword">int</span> j = <span className="number">0</span>; j &lt; cols; j++)</div>
+            <div className="line">            {`{`}</div>
+            <div className="line">                vecteur[k++] = mat[i, j];</div>
+            <div className="line">            {`}`}</div>
+            <div className="line">        {`}`}</div>
+            <div className="line">    {`}`}</div>
+            <div className="line"></div>
+            <div className="line">    <span className="keyword">return</span> vecteur;</div>
+            <div className="line">{`}`}</div>
+          </div>
+        );
+    }
+  };
+
+  const codeContent = getCodeContent(currentEx + 1);
+  
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -81,12 +206,12 @@ export default function Placeholder() {
             <button className="options-btn">⋮</button>
           </div>
           <div className="enonce-body">
-            <h2 className="text-lg font-semibold mb-3">Transformation Matrice vers Vecteur</h2>
+            <h2 className="text-lg font-semibold mb-3">{enonceContent.title}</h2>
             <p className="mb-3">
-              Ecrire la méthode qui consiste à traduire une matrice en un tableau (ou vecteur) et retourner le tableau (ou vecteur) résultant
+              {enonceContent.description}
             </p>
             <div className="code-block">
-              int[] Matrice_Vecteur(int[,] mat)
+              {enonceContent.signature}
             </div>
             <p className="mb-3 secondary">
               Attention à tester les cas aux limites
@@ -94,8 +219,8 @@ export default function Placeholder() {
             <div className="mb-3">
               <span className="mark">Exemple :</span>
             </div>
-            <p className="mb-3 secondary">
-              soit mat la matrice {`{{1,2,3},{4,5,6},{7,8,9}}`}, le résultat est le suivant : {`{1,2,3,4,5,6,7,8,9}`}
+            <p className="mb-3 secondary" style={{ whiteSpace: 'pre-line' }}>
+              {enonceContent.example}
             </p>
             <p>
               <span className="mark">Pas de Main, ni d&apos;affichage</span>
