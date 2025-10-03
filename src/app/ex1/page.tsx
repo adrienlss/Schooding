@@ -43,8 +43,10 @@ export default function Ex1Page() {
           <div className="flex items-center gap-1">
             {Array.from({ length: 6 }, (_, i) => (
               <a key={i} href={`/ex${i + 1}`} className={`tab ${i === 0 ? 'active' : ''}`}>
-                <span>&lt;&gt;</span>
-                <span>Ex {i + 1}</span>
+                <div className="flex items-center gap-1">
+                  <span>&lt;&gt;</span>
+                  <span>Ex {i + 1}</span>
+                </div>
                 <span className="tab-badge">1pts</span>
               </a>
             ))}
@@ -99,9 +101,8 @@ export default function Ex1Page() {
         <div className="editor-container">
           {/* Toolbar */}
           <div className="toolbar">
-            <button className="toolbar-btn snippets">Snippets ▾</button>
+            <button className="toolbar-btn snippets toolbar-label-small">Snippets ▾</button>
             <button className="toolbar-btn plus">+</button>
-            <button className="toolbar-btn snippets">Historique ▾</button>
             <button className="toolbar-btn save">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z"/>
