@@ -52,8 +52,8 @@ export default function Ex1Page() {
             ))}
           </div>
         </div>
-        <div className="flex flex-col items-end text-white font-semibold">
-          <span>Adrien Lassus*</span>
+        <div className="flex flex-col items-end text-white">
+          <span className="user-name">Adrien Lassus*</span>
           <div className="flex items-center gap-2">
             <span>Termine dans : </span>
             <span 
