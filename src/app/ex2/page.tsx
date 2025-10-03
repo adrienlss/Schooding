@@ -36,11 +36,11 @@ export default function Ex2Page() {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="header">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <a href="/instructions" className="instructions-link">
             Instructions et Aide
           </a>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             {Array.from({ length: 6 }, (_, i) => (
               <a key={i} href={`/ex${i + 1}`} className={`tab ${i === 1 ? 'active' : ''}`}>
                 <span>&lt;&gt;</span>
