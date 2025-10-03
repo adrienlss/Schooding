@@ -148,16 +148,20 @@ export default function Ex2Page() {
               <div>27</div>
             </div>
           <div className="code-area">
-            <div className="line"><span className="keyword">static</span> <span className="keyword">void</span> DecaleMatrice(<span className="keyword">int</span>[,] mat, <span className="keyword">int</span> valeur)</div>
-            <div className="line">{`{`}</div>
-            <div className="line">    <span className="keyword">if</span> (mat == <span className="keyword">null</span> || mat.Length == <span className="number">0</span>) <span className="keyword">return</span>;</div>
-            <div className="line">    <span className="keyword">int</span> n = mat.Length;</div>
-            <div className="line">    <span className="keyword">int</span> r = mat.GetLength(<span className="number">0</span>), c = mat.GetLength(<span className="number">1</span>);</div>
-            <div className="line">    valeur %= n; <span className="keyword">if</span> (valeur == <span className="number">0</span>) <span className="keyword">return</span>;</div>
-            <div className="line">    <span className="keyword">int</span>[] t = <span className="keyword">new</span> <span className="keyword">int</span>[n];</div>
-            <div className="line">    <span className="keyword">for</span> (<span className="keyword">int</span> i = <span className="number">0</span>; i &lt; n; i++) t[i] = mat[i / c, i % c];</div>
-            <div className="line">    <span className="keyword">for</span> (<span className="keyword">int</span> i = <span className="number">0</span>; i &lt; n; i++) mat[i / c, i % c] = t[(i - valeur + n) % n];</div>
-            <div className="line">{`}`}</div>
+            <textarea 
+              className="code-editor"
+              defaultValue={`static void DecaleMatrice(int[,] mat, int valeur)
+{
+    if (mat == null || mat.Length == 0) return;
+    int n = mat.Length;
+    int r = mat.GetLength(0), c = mat.GetLength(1);
+    valeur %= n; if (valeur == 0) return;
+    int[] t = new int[n];
+    for (int i = 0; i < n; i++) t[i] = mat[i / c, i % c];
+    for (int i = 0; i < n; i++) mat[i / c, i % c] = t[(i - valeur + n) % n];
+}`}
+              spellCheck={false}
+            />
           </div>
           </div>
 

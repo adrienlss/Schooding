@@ -146,38 +146,42 @@ export default function Home() {
               <div>26</div>
               <div>27</div>
             </div>
-            <div className="code-area">
-              <div className="line"><span className="keyword">static</span> <span className="keyword">int</span>[] Matrice_Vecteur(<span className="keyword">int</span>[,] mat)</div>
-              <div className="line">{`{`}</div>
-              <div className="line">    <span className="keyword">int</span>[] vecteur;</div>
-              <div className="line"></div>
-              <div className="line">    <span className="keyword">if</span> (mat == <span className="keyword">null</span>)</div>
-              <div className="line">    {`{`}</div>
-              <div className="line">        vecteur = <span className="keyword">null</span>;</div>
-              <div className="line">    {`}`}</div>
-              <div className="line">    <span className="keyword">else</span> <span className="keyword">if</span> (mat.Length == <span className="number">0</span>)</div>
-              <div className="line">    {`{`}</div>
-              <div className="line">        vecteur = <span className="keyword">new</span> <span className="keyword">int</span>[<span className="number">0</span>];</div>
-              <div className="line">    {`}`}</div>
-              <div className="line">    <span className="keyword">else</span></div>
-              <div className="line">    {`{`}</div>
-              <div className="line">        <span className="keyword">int</span> rows = mat.GetLength(<span className="number">0</span>);</div>
-              <div className="line">        <span className="keyword">int</span> cols = mat.GetLength(<span className="number">1</span>);</div>
-              <div className="line">        vecteur = <span className="keyword">new</span> <span className="keyword">int</span>[rows * cols];</div>
-              <div className="line"></div>
-              <div className="line">        <span className="keyword">int</span> k = <span className="number">0</span>;</div>
-              <div className="line">        <span className="keyword">for</span> (<span className="keyword">int</span> i = <span className="number">0</span>; i &lt; rows; i++)</div>
-              <div className="line">        {`{`}</div>
-              <div className="line">            <span className="keyword">for</span> (<span className="keyword">int</span> j = <span className="number">0</span>; j &lt; cols; j++)</div>
-              <div className="line">            {`{`}</div>
-              <div className="line">                vecteur[k++] = mat[i, j];</div>
-              <div className="line">            {`}`}</div>
-              <div className="line">        {`}`}</div>
-              <div className="line">    {`}`}</div>
-              <div className="line"></div>
-              <div className="line">    <span className="keyword">return</span> vecteur;</div>
-              <div className="line">{`}`}</div>
-            </div>
+          <div className="code-area">
+            <textarea 
+              className="code-editor"
+              defaultValue={`static int[] Matrice_Vecteur(int[,] mat)
+{
+    int[] vecteur;
+
+    if (mat == null)
+    {
+        vecteur = null;
+    }
+    else if (mat.Length == 0)
+    {
+        vecteur = new int[0];
+    }
+    else
+    {
+        int rows = mat.GetLength(0);
+        int cols = mat.GetLength(1);
+        vecteur = new int[rows * cols];
+
+        int k = 0;
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                vecteur[k++] = mat[i, j];
+            }
+        }
+    }
+
+    return vecteur;
+}`}
+              spellCheck={false}
+            />
+          </div>
           </div>
 
           {/* Bouton Exécuter */}

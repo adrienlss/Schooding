@@ -76,90 +76,98 @@ export default function Placeholder() {
     switch (exNumber) {
       case 2:
         return (
-          <div className="code-area">
-            <div className="line"><span className="keyword">static</span> <span className="keyword">void</span> DecaleMatrice(<span className="keyword">int</span>[,] mat, <span className="keyword">int</span> valeur)</div>
-            <div className="line">{`{`}</div>
-            <div className="line">    <span className="keyword">if</span> (mat == <span className="keyword">null</span> || mat.Length == <span className="number">0</span>) <span className="keyword">return</span>;</div>
-            <div className="line">    <span className="keyword">int</span> n = mat.Length;</div>
-            <div className="line">    <span className="keyword">int</span> r = mat.GetLength(<span className="number">0</span>), c = mat.GetLength(<span className="number">1</span>);</div>
-            <div className="line">    valeur %= n; <span className="keyword">if</span> (valeur == <span className="number">0</span>) <span className="keyword">return</span>;</div>
-            <div className="line">    <span className="keyword">int</span>[] t = <span className="keyword">new</span> <span className="keyword">int</span>[n];</div>
-            <div className="line">    <span className="keyword">for</span> (<span className="keyword">int</span> i = <span className="number">0</span>; i &lt; n; i++) t[i] = mat[i / c, i % c];</div>
-            <div className="line">    <span className="keyword">for</span> (<span className="keyword">int</span> i = <span className="number">0</span>; i &lt; n; i++) mat[i / c, i % c] = t[(i - valeur + n) % n];</div>
-            <div className="line">{`}`}</div>
-          </div>
+          <textarea 
+            className="code-editor"
+            defaultValue={`static void DecaleMatrice(int[,] mat, int valeur)
+{
+    if (mat == null || mat.Length == 0) return;
+    int n = mat.Length;
+    int r = mat.GetLength(0), c = mat.GetLength(1);
+    valeur %= n; if (valeur == 0) return;
+    int[] t = new int[n];
+    for (int i = 0; i < n; i++) t[i] = mat[i / c, i % c];
+    for (int i = 0; i < n; i++) mat[i / c, i % c] = t[(i - valeur + n) % n];
+}`}
+            spellCheck={false}
+          />
         );
       case 3:
         return (
-          <div className="code-area">
-            <div className="line"><span className="keyword">using</span> System;</div>
-            <div className="line"></div>
-            <div className="line"><span className="keyword">public</span> <span className="keyword">class</span> Mot</div>
-            <div className="line">{`{`}</div>
-            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> lemot;</div>
-            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> categorie_grammaticale;</div>
-            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> definition;</div>
-            <div className="line">    <span className="keyword">private</span> <span className="keyword">char</span> genre;</div>
-            <div className="line">{`}`}</div>
-          </div>
+          <textarea 
+            className="code-editor"
+            defaultValue={`using System;
+
+public class Mot
+{
+    private string lemot;
+    private string categorie_grammaticale;
+    private string definition;
+    private char genre;
+}`}
+            spellCheck={false}
+          />
         );
       case 4:
         return (
-          <div className="code-area">
-            <div className="line"><span className="keyword">using</span> System;</div>
-            <div className="line"></div>
-            <div className="line"><span className="keyword">public</span> <span className="keyword">class</span> Mot</div>
-            <div className="line">{`{`}</div>
-            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> lemot;</div>
-            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> categorie_grammaticale;</div>
-            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> definition;</div>
-            <div className="line">    <span className="keyword">private</span> <span className="keyword">char</span> genre;</div>
-            <div className="line"></div>
-            <div className="line">    <span className="keyword">public</span> Mot(<span className="keyword">string</span> lemot, <span className="keyword">string</span> categorie_grammaticale, <span className="keyword">string</span> definition, <span className="keyword">char</span> genre = <span className="string">&apos;n&apos;</span>)</div>
-            <div className="line">    {`{`}</div>
-            <div className="line">        {`// TO COMPLETE`}</div>
-            <div className="line">    {`}`}</div>
-            <div className="line">{`}`}</div>
-          </div>
+          <textarea 
+            className="code-editor"
+            defaultValue={`using System;
+
+public class Mot
+{
+    private string lemot;
+    private string categorie_grammaticale;
+    private string definition;
+    private char genre;
+
+    public Mot(string lemot, string categorie_grammaticale, string definition, char genre = 'n')
+    {
+        // TO COMPLETE
+    }
+}`}
+            spellCheck={false}
+          />
         );
       default:
         return (
-          <div className="code-area">
-            <div className="line"><span className="keyword">static</span> <span className="keyword">int</span>[] Matrice_Vecteur(<span className="keyword">int</span>[,] mat)</div>
-            <div className="line">{`{`}</div>
-            <div className="line">    <span className="keyword">int</span>[] vecteur;</div>
-            <div className="line"></div>
-            <div className="line">    <span className="keyword">if</span> (mat == <span className="keyword">null</span>)</div>
-            <div className="line">    {`{`}</div>
-            <div className="line">        vecteur = <span className="keyword">null</span>;</div>
-            <div className="line">    {`}`}</div>
-            <div className="line">    <span className="keyword">else</span> <span className="keyword">if</span> (mat.Length == <span className="number">0</span>)</div>
-            <div className="line">    {`{`}</div>
-            <div className="line">        vecteur = <span className="keyword">new</span> <span className="keyword">int</span>[<span className="number">0</span>];</div>
-            <div className="line">    {`}`}</div>
-            <div className="line">    <span className="keyword">else</span></div>
-            <div className="line">    {`{`}</div>
-            <div className="line">        <span className="keyword">int</span> rows = mat.GetLength(<span className="number">0</span>);</div>
-            <div className="line">        <span className="keyword">int</span> cols = mat.GetLength(<span className="number">1</span>);</div>
-            <div className="line">        vecteur = <span className="keyword">new</span> <span className="keyword">int</span>[rows * cols];</div>
-            <div className="line"></div>
-            <div className="line">        <span className="keyword">int</span> k = <span className="number">0</span>;</div>
-            <div className="line">        <span className="keyword">for</span> (<span className="keyword">int</span> i = <span className="number">0</span>; i &lt; rows; i++)</div>
-            <div className="line">        {`{`}</div>
-            <div className="line">            <span className="keyword">for</span> (<span className="keyword">int</span> j = <span className="number">0</span>; j &lt; cols; j++)</div>
-            <div className="line">            {`{`}</div>
-            <div className="line">                vecteur[k++] = mat[i, j];</div>
-            <div className="line">            {`}`}</div>
-            <div className="line">        {`}`}</div>
-            <div className="line">    {`}`}</div>
-            <div className="line"></div>
-            <div className="line">    <span className="keyword">return</span> vecteur;</div>
-            <div className="line">{`}`}</div>
-          </div>
+          <textarea 
+            className="code-editor"
+            defaultValue={`static int[] Matrice_Vecteur(int[,] mat)
+{
+    int[] vecteur;
+
+    if (mat == null)
+    {
+        vecteur = null;
+    }
+    else if (mat.Length == 0)
+    {
+        vecteur = new int[0];
+    }
+    else
+    {
+        int rows = mat.GetLength(0);
+        int cols = mat.GetLength(1);
+        vecteur = new int[rows * cols];
+
+        int k = 0;
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                vecteur[k++] = mat[i, j];
+            }
+        }
+    }
+
+    return vecteur;
+}`}
+            spellCheck={false}
+          />
         );
     }
   };
-
+  
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
