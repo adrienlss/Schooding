@@ -115,9 +115,9 @@ export default function Placeholder() {
             <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> definition;</div>
             <div className="line">    <span className="keyword">private</span> <span className="keyword">char</span> genre;</div>
             <div className="line"></div>
-            <div className="line">    <span className="keyword">public</span> Mot(<span className="keyword">string</span> lemot, <span className="keyword">string</span> categorie_grammaticale, <span className="keyword">string</span> definition, <span className="keyword">char</span> genre = <span className="string">'n'</span>)</div>
+            <div className="line">    <span className="keyword">public</span> Mot(<span className="keyword">string</span> lemot, <span className="keyword">string</span> categorie_grammaticale, <span className="keyword">string</span> definition, <span className="keyword">char</span> genre = <span className="string">&apos;n&apos;</span>)</div>
             <div className="line">    {`{`}</div>
-            <div className="line">        <span className="comment">// TO COMPLETE</span></div>
+            <div className="line">        {`// TO COMPLETE`}</div>
             <div className="line">    {`}`}</div>
             <div className="line">{`}`}</div>
           </div>
@@ -160,8 +160,6 @@ export default function Placeholder() {
     }
   };
 
-  const codeContent = getCodeContent(currentEx + 1);
-  
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -184,16 +182,14 @@ export default function Placeholder() {
         </div>
         <div className="flex flex-col items-end text-white">
           <span className="user-name">Adrien Lassus*</span>
-          <div className="flex items-center gap-2">
-            <span>Termine dans : </span>
-            <span 
-              onClick={toggleTimer}
-              className="timer-display"
-              title={isActive ? "Cliquer pour mettre en pause" : "Cliquer pour démarrer"}
-            >
-              {formatTime(timeLeft)}
-            </span>
-          </div>
+          <span>Termine dans :</span>
+          <span 
+            onClick={toggleTimer}
+            className="timer-display"
+            title={isActive ? "Cliquer pour mettre en pause" : "Cliquer pour démarrer"}
+          >
+            {formatTime(timeLeft)}
+          </span>
         </div>
       </header>
 

@@ -54,16 +54,14 @@ export default function Ex2Page() {
         </div>
         <div className="flex flex-col items-end text-white">
           <span className="user-name">Adrien Lassus*</span>
-          <div className="flex items-center gap-2">
-            <span>Termine dans : </span>
-            <span 
-              onClick={toggleTimer}
-              className="timer-display"
-              title={isActive ? "Cliquer pour mettre en pause" : "Cliquer pour démarrer"}
-            >
-              {formatTime(timeLeft)}
-            </span>
-          </div>
+          <span>Termine dans :</span>
+          <span 
+            onClick={toggleTimer}
+            className="timer-display"
+            title={isActive ? "Cliquer pour mettre en pause" : "Cliquer pour démarrer"}
+          >
+            {formatTime(timeLeft)}
+          </span>
         </div>
       </header>
 
