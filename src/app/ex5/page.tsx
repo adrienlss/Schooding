@@ -128,20 +128,8 @@ export default function Ex5() {
               <div>10</div>
             </div>
           <div className="code-area">
-            <div className="syntax-highlighted-editor">
-              <div className="syntax-line"><span className="syntax-comment">{`// Vous êtes à la ligne 86`}</span></div>
-              <div className="syntax-line"></div>
-              <div className="syntax-line"><span className="syntax-keyword">public</span> <span className="syntax-keyword">partial</span> <span className="syntax-keyword">class</span> <span className="syntax-type">Texte</span></div>
-              <div className="syntax-line">{`{`}</div>
-              <div className="syntax-line"></div>
-              <div className="syntax-line">    <span className="syntax-keyword">public</span> <span className="syntax-type">Mot</span>[] <span className="syntax-type">Recherche</span>(<span className="syntax-keyword">char</span> genre)</div>
-              <div className="syntax-line">    {`{`}</div>
-              <div className="syntax-line">        <span className="syntax-comment">{`//TO COMPLETE`}</span></div>
-              <div className="syntax-line">    {`}`}</div>
-              <div className="syntax-line">{`}`}</div>
-            </div>
             <textarea 
-              className="code-editor-overlay"
+              className="code-editor-editable"
               defaultValue={`// Vous êtes à la ligne 86
 
 public partial class Texte

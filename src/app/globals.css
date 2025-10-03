@@ -66,7 +66,7 @@ body {
   border-radius: 3px;
   color: #fff;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   align-items: center;
 }
@@ -93,7 +93,7 @@ body {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 16px;
   padding: 3px 8px;
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.1);
@@ -335,29 +335,7 @@ body {
 }
 
 /* Éditeur avec coloration syntaxique */
-.syntax-highlighted-editor {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  font-family: 'Courier New', monospace;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.4;
-  white-space: pre;
-  overflow: hidden;
-}
-
-.syntax-line {
-  min-height: 22px;
-  display: block;
-}
-
-.code-editor-overlay {
-  position: relative;
+.code-editor-editable {
   width: 100%;
   height: 100%;
   background: transparent;
@@ -367,12 +345,11 @@ body {
   font-size: 16px;
   font-weight: 600;
   line-height: 1.4;
-  color: transparent;
+  color: #000;
   resize: none;
   padding: 0;
   margin: 0;
   caret-color: #000;
-  z-index: 2;
 }
 
 .code-area .line.active {

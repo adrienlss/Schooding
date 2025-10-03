@@ -148,40 +148,8 @@ export default function Ex1Page() {
               <div>27</div>
             </div>
           <div className="code-area">
-            <div className="syntax-highlighted-editor">
-              <div className="syntax-line"><span className="syntax-keyword">static</span> <span className="syntax-keyword">int</span>[] <span className="syntax-type">Matrice_Vecteur</span>(<span className="syntax-keyword">int</span>[,] mat)</div>
-              <div className="syntax-line">{`{`}</div>
-              <div className="syntax-line">    <span className="syntax-keyword">int</span>[] vecteur;</div>
-              <div className="syntax-line"></div>
-              <div className="syntax-line">    <span className="syntax-keyword">if</span> (mat == <span className="syntax-keyword">null</span>)</div>
-              <div className="syntax-line">    {`{`}</div>
-              <div className="syntax-line">        vecteur = <span className="syntax-keyword">null</span>;</div>
-              <div className="syntax-line">    {`}`}</div>
-              <div className="syntax-line">    <span className="syntax-keyword">else</span> <span className="syntax-keyword">if</span> (mat.Length == <span className="syntax-number">0</span>)</div>
-              <div className="syntax-line">    {`{`}</div>
-              <div className="syntax-line">        vecteur = <span className="syntax-keyword">new</span> <span className="syntax-keyword">int</span>[<span className="syntax-number">0</span>];</div>
-              <div className="syntax-line">    {`}`}</div>
-              <div className="syntax-line">    <span className="syntax-keyword">else</span></div>
-              <div className="syntax-line">    {`{`}</div>
-              <div className="syntax-line">        <span className="syntax-keyword">int</span> rows = mat.GetLength(<span className="syntax-number">0</span>);</div>
-              <div className="syntax-line">        <span className="syntax-keyword">int</span> cols = mat.GetLength(<span className="syntax-number">1</span>);</div>
-              <div className="syntax-line">        vecteur = <span className="syntax-keyword">new</span> <span className="syntax-keyword">int</span>[rows <span className="syntax-operator">*</span> cols];</div>
-              <div className="syntax-line"></div>
-              <div className="syntax-line">        <span className="syntax-keyword">int</span> k = <span className="syntax-number">0</span>;</div>
-              <div className="syntax-line">        <span className="syntax-keyword">for</span> (<span className="syntax-keyword">int</span> i = <span className="syntax-number">0</span>; i <span className="syntax-operator">&lt;</span> rows; i<span className="syntax-operator">++</span>)</div>
-              <div className="syntax-line">        {`{`}</div>
-              <div className="syntax-line">            <span className="syntax-keyword">for</span> (<span className="syntax-keyword">int</span> j = <span className="syntax-number">0</span>; j <span className="syntax-operator">&lt;</span> cols; j<span className="syntax-operator">++</span>)</div>
-              <div className="syntax-line">            {`{`}</div>
-              <div className="syntax-line">                vecteur[k<span className="syntax-operator">++</span>] = mat[i, j];</div>
-              <div className="syntax-line">            {`}`}</div>
-              <div className="syntax-line">        {`}`}</div>
-              <div className="syntax-line">    {`}`}</div>
-              <div className="syntax-line"></div>
-              <div className="syntax-line">    <span className="syntax-keyword">return</span> vecteur;</div>
-              <div className="syntax-line">{`}`}</div>
-            </div>
             <textarea 
-              className="code-editor-overlay"
+              className="code-editor-editable"
               defaultValue={`static int[] Matrice_Vecteur(int[,] mat)
 {
     int[] vecteur;

@@ -148,20 +148,8 @@ export default function Ex2Page() {
               <div>27</div>
             </div>
           <div className="code-area">
-            <div className="syntax-highlighted-editor">
-              <div className="syntax-line"><span className="syntax-keyword">static</span> <span className="syntax-keyword">void</span> <span className="syntax-type">DecaleMatrice</span>(<span className="syntax-keyword">int</span>[,] mat, <span className="syntax-keyword">int</span> valeur)</div>
-              <div className="syntax-line">{`{`}</div>
-              <div className="syntax-line">    <span className="syntax-keyword">if</span> (mat == <span className="syntax-keyword">null</span> <span className="syntax-operator">||</span> mat.Length == <span className="syntax-number">0</span>) <span className="syntax-keyword">return</span>;</div>
-              <div className="syntax-line">    <span className="syntax-keyword">int</span> n = mat.Length;</div>
-              <div className="syntax-line">    <span className="syntax-keyword">int</span> r = mat.GetLength(<span className="syntax-number">0</span>), c = mat.GetLength(<span className="syntax-number">1</span>);</div>
-              <div className="syntax-line">    valeur <span className="syntax-operator">%=</span> n; <span className="syntax-keyword">if</span> (valeur == <span className="syntax-number">0</span>) <span className="syntax-keyword">return</span>;</div>
-              <div className="syntax-line">    <span className="syntax-keyword">int</span>[] t = <span className="syntax-keyword">new</span> <span className="syntax-keyword">int</span>[n];</div>
-              <div className="syntax-line">    <span className="syntax-keyword">for</span> (<span className="syntax-keyword">int</span> i = <span className="syntax-number">0</span>; i <span className="syntax-operator">&lt;</span> n; i<span className="syntax-operator">++</span>) t[i] = mat[i <span className="syntax-operator">/</span> c, i <span className="syntax-operator">%</span> c];</div>
-              <div className="syntax-line">    <span className="syntax-keyword">for</span> (<span className="syntax-keyword">int</span> i = <span className="syntax-number">0</span>; i <span className="syntax-operator">&lt;</span> n; i<span className="syntax-operator">++</span>) mat[i <span className="syntax-operator">/</span> c, i <span className="syntax-operator">%</span> c] = t[(i <span className="syntax-operator">-</span> valeur <span className="syntax-operator">+</span> n) <span className="syntax-operator">%</span> n];</div>
-              <div className="syntax-line">{`}`}</div>
-            </div>
             <textarea 
-              className="code-editor-overlay"
+              className="code-editor-editable"
               defaultValue={`static void DecaleMatrice(int[,] mat, int valeur)
 {
     if (mat == null || mat.Length == 0) return;

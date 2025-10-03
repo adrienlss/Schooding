@@ -129,24 +129,8 @@ export default function Ex4() {
               <div>11</div>
             </div>
           <div className="code-area">
-            <div className="syntax-highlighted-editor">
-              <div className="syntax-line"><span className="syntax-keyword">using</span> System;</div>
-              <div className="syntax-line"></div>
-              <div className="syntax-line"><span className="syntax-keyword">public</span> <span className="syntax-keyword">class</span> <span className="syntax-type">Mot</span></div>
-              <div className="syntax-line">{`{`}</div>
-              <div className="syntax-line">    <span className="syntax-keyword">private</span> <span className="syntax-keyword">string</span> lemot;</div>
-              <div className="syntax-line">    <span className="syntax-keyword">private</span> <span className="syntax-keyword">string</span> categorie_grammaticale;</div>
-              <div className="syntax-line">    <span className="syntax-keyword">private</span> <span className="syntax-keyword">string</span> definition;</div>
-              <div className="syntax-line">    <span className="syntax-keyword">private</span> <span className="syntax-keyword">char</span> genre;</div>
-              <div className="syntax-line"></div>
-              <div className="syntax-line">    <span className="syntax-keyword">public</span> <span className="syntax-type">Mot</span>(<span className="syntax-keyword">string</span> lemot, <span className="syntax-keyword">string</span> categorie_grammaticale, <span className="syntax-keyword">string</span> definition, <span className="syntax-keyword">char</span> genre = <span className="syntax-string">&apos;n&apos;</span>)</div>
-              <div className="syntax-line">    {`{`}</div>
-              <div className="syntax-line">        <span className="syntax-comment">{`// TO COMPLETE`}</span></div>
-              <div className="syntax-line">    {`}`}</div>
-              <div className="syntax-line">{`}`}</div>
-            </div>
             <textarea 
-              className="code-editor-overlay"
+              className="code-editor-editable"
               defaultValue={`using System;
 
 public class Mot
