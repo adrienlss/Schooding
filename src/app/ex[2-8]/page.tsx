@@ -42,10 +42,10 @@ export default function Placeholder() {
       {/* Header */}
       <header className="header">
         <div className="flex items-center gap-3">
-          <a href="/instructions" className="tab">
+          <a href="/instructions" className="instructions-link">
             Instructions et Aide
           </a>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             {Array.from({ length: 6 }, (_, i) => (
               <a key={i} href={`/ex${i + 1}`} className={`tab ${i === currentEx ? 'active' : ''}`}>
                 <span>&lt;&gt;</span>
@@ -61,7 +61,7 @@ export default function Placeholder() {
           <span>Termine dans : </span>
           <span 
             onClick={toggleTimer}
-            className="cursor-pointer hover:bg-white hover:bg-opacity-10 px-2 py-1 rounded transition-colors"
+            className="timer-display"
             title={isActive ? "Cliquer pour mettre en pause" : "Cliquer pour démarrer"}
           >
             {formatTime(timeLeft)}
