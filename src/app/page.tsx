@@ -1,4 +1,36 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
 export default function Home() {
+  const [timeLeft, setTimeLeft] = useState(45 * 60); // 45 minutes en secondes
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+    
+    if (isActive && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft(timeLeft => timeLeft - 1);
+      }, 1000);
+    } else if (timeLeft === 0) {
+      setIsActive(false);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isActive, timeLeft]);
+
+  const formatTime = (seconds: number) => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes}min ${secs}s`;
+  };
+
+  const toggleTimer = () => {
+    setIsActive(!isActive);
+  };
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -20,7 +52,14 @@ export default function Home() {
         <div className="flex items-center gap-2 text-white font-semibold">
           <span>Adrien Lassus*</span>
           <span>—</span>
-          <span>Termine dans : 1h 4m 54s</span>
+          <span>Termine dans : </span>
+          <span 
+            onClick={toggleTimer}
+            className="cursor-pointer hover:bg-white hover:bg-opacity-10 px-2 py-1 rounded transition-colors"
+            title={isActive ? "Cliquer pour mettre en pause" : "Cliquer pour démarrer"}
+          >
+            {formatTime(timeLeft)}
+          </span>
         </div>
       </header>
 

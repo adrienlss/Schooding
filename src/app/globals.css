@@ -426,7 +426,7 @@ body {
 
 /* Coloration syntaxique */
 .keyword {
-  color: #7c3aed; /* Violet pour les mots-clés */
+  color: #4c1d95; /* Violet foncé pour les mots-clés */
   font-weight: bold;
 }
 
