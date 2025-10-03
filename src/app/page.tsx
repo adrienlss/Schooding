@@ -143,7 +143,7 @@ export default function Home() {
               <button className="format-btn">1.</button>
             </div>
             <div className="input-container">
-              <textarea className="chat-input" placeholder="Tapez votre message..." rows="1"></textarea>
+              <textarea className="chat-input" placeholder="Tapez votre message..." rows={1}></textarea>
               <div className="resize-handle"></div>
             </div>
             <div className="send-container">
