@@ -61,6 +61,7 @@ export default function Home() {
           <div className="toolbar">
             <button className="toolbar-btn snippets">Snippets ▾</button>
             <button className="toolbar-btn plus">+</button>
+            <button className="toolbar-btn snippets">Historique ▾</button>
             <button className="toolbar-btn save">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z"/>
@@ -88,18 +89,55 @@ export default function Home() {
               <div>8</div>
               <div>9</div>
               <div>10</div>
+              <div>11</div>
+              <div>12</div>
+              <div>13</div>
+              <div>14</div>
+              <div>15</div>
+              <div>16</div>
+              <div>17</div>
+              <div>18</div>
+              <div>19</div>
+              <div>20</div>
+              <div>21</div>
+              <div>22</div>
+              <div>23</div>
+              <div>24</div>
+              <div>25</div>
+              <div>26</div>
+              <div>27</div>
             </div>
             <div className="code-area">
-              <div className="line">{`// TO COMPLETE Vous êtes à la ligne 10`}</div>
-              <div className="line">{`//`}</div>
-              <div className="line"></div>
-              <div className="line">static int[] Matrice_Vecteur(int[,] mat)</div>
+              <div className="line"><span className="keyword">static</span> <span className="keyword">int</span>[] Matrice_Vecteur(<span className="keyword">int</span>[,] mat)</div>
               <div className="line">{`{`}</div>
+              <div className="line">    <span className="keyword">int</span>[] vecteur;</div>
               <div className="line"></div>
+              <div className="line">    <span className="keyword">if</span> (mat == <span className="keyword">null</span>)</div>
+              <div className="line">    {`{`}</div>
+              <div className="line">        vecteur = <span className="keyword">null</span>;</div>
+              <div className="line">    {`}`}</div>
+              <div className="line">    <span className="keyword">else</span> <span className="keyword">if</span> (mat.Length == <span className="number">0</span>)</div>
+              <div className="line">    {`{`}</div>
+              <div className="line">        vecteur = <span className="keyword">new</span> <span className="keyword">int</span>[<span className="number">0</span>];</div>
+              <div className="line">    {`}`}</div>
+              <div className="line">    <span className="keyword">else</span></div>
+              <div className="line">    {`{`}</div>
+              <div className="line">        <span className="keyword">int</span> rows = mat.GetLength(<span className="number">0</span>);</div>
+              <div className="line">        <span className="keyword">int</span> cols = mat.GetLength(<span className="number">1</span>);</div>
+              <div className="line">        vecteur = <span className="keyword">new</span> <span className="keyword">int</span>[rows * cols];</div>
               <div className="line"></div>
+              <div className="line">        <span className="keyword">int</span> k = <span className="number">0</span>;</div>
+              <div className="line">        <span className="keyword">for</span> (<span className="keyword">int</span> i = <span className="number">0</span>; i &lt; rows; i++)</div>
+              <div className="line">        {`{`}</div>
+              <div className="line">            <span className="keyword">for</span> (<span className="keyword">int</span> j = <span className="number">0</span>; j &lt; cols; j++)</div>
+              <div className="line">            {`{`}</div>
+              <div className="line">                vecteur[k++] = mat[i, j];</div>
+              <div className="line">            {`}`}</div>
+              <div className="line">        {`}`}</div>
+              <div className="line">    {`}`}</div>
               <div className="line"></div>
+              <div className="line">    <span className="keyword">return</span> vecteur;</div>
               <div className="line">{`}`}</div>
-              <div className="line"></div>
             </div>
           </div>
 

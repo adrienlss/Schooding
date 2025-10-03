@@ -424,6 +424,16 @@ body {
   color: var(--muted);
 }
 
+/* Coloration syntaxique */
+.keyword {
+  color: #7c3aed; /* Violet pour les mots-clés */
+  font-weight: bold;
+}
+
+.number {
+  color: #2563eb; /* Bleu pour les nombres */
+}
+
 /* Focus visible */
 input:focus,
 button:focus,
