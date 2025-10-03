@@ -76,9 +76,22 @@ export default function Placeholder() {
     switch (exNumber) {
       case 2:
         return (
-          <textarea 
-            className="code-editor"
-            defaultValue={`static void DecaleMatrice(int[,] mat, int valeur)
+          <>
+            <div className="syntax-highlighted-editor">
+              <div className="syntax-line"><span className="syntax-keyword">static</span> <span className="syntax-keyword">void</span> <span className="syntax-type">DecaleMatrice</span>(<span className="syntax-keyword">int</span>[,] mat, <span className="syntax-keyword">int</span> valeur)</div>
+              <div className="syntax-line">{`{`}</div>
+              <div className="syntax-line">    <span className="syntax-keyword">if</span> (mat == <span className="syntax-keyword">null</span> <span className="syntax-operator">||</span> mat.Length == <span className="syntax-number">0</span>) <span className="syntax-keyword">return</span>;</div>
+              <div className="syntax-line">    <span className="syntax-keyword">int</span> n = mat.Length;</div>
+              <div className="syntax-line">    <span className="syntax-keyword">int</span> r = mat.GetLength(<span className="syntax-number">0</span>), c = mat.GetLength(<span className="syntax-number">1</span>);</div>
+              <div className="syntax-line">    valeur <span className="syntax-operator">%=</span> n; <span className="syntax-keyword">if</span> (valeur == <span className="syntax-number">0</span>) <span className="syntax-keyword">return</span>;</div>
+              <div className="syntax-line">    <span className="syntax-keyword">int</span>[] t = <span className="syntax-keyword">new</span> <span className="syntax-keyword">int</span>[n];</div>
+              <div className="syntax-line">    <span className="syntax-keyword">for</span> (<span className="syntax-keyword">int</span> i = <span className="syntax-number">0</span>; i <span className="syntax-operator">&lt;</span> n; i<span className="syntax-operator">++</span>) t[i] = mat[i <span className="syntax-operator">/</span> c, i <span className="syntax-operator">%</span> c];</div>
+              <div className="syntax-line">    <span className="syntax-keyword">for</span> (<span className="syntax-keyword">int</span> i = <span className="syntax-number">0</span>; i <span className="syntax-operator">&lt;</span> n; i<span className="syntax-operator">++</span>) mat[i <span className="syntax-operator">/</span> c, i <span className="syntax-operator">%</span> c] = t[(i <span className="syntax-operator">-</span> valeur <span className="syntax-operator">+</span> n) <span className="syntax-operator">%</span> n];</div>
+              <div className="syntax-line">{`}`}</div>
+            </div>
+            <textarea 
+              className="code-editor-overlay"
+              defaultValue={`static void DecaleMatrice(int[,] mat, int valeur)
 {
     if (mat == null || mat.Length == 0) return;
     int n = mat.Length;
@@ -88,14 +101,27 @@ export default function Placeholder() {
     for (int i = 0; i < n; i++) t[i] = mat[i / c, i % c];
     for (int i = 0; i < n; i++) mat[i / c, i % c] = t[(i - valeur + n) % n];
 }`}
-            spellCheck={false}
-          />
+              spellCheck={false}
+            />
+          </>
         );
       case 3:
         return (
-          <textarea 
-            className="code-editor"
-            defaultValue={`using System;
+          <>
+            <div className="syntax-highlighted-editor">
+              <div className="syntax-line"><span className="syntax-keyword">using</span> System;</div>
+              <div className="syntax-line"></div>
+              <div className="syntax-line"><span className="syntax-keyword">public</span> <span className="syntax-keyword">class</span> <span className="syntax-type">Mot</span></div>
+              <div className="syntax-line">{`{`}</div>
+              <div className="syntax-line">    <span className="syntax-keyword">private</span> <span className="syntax-keyword">string</span> lemot;</div>
+              <div className="syntax-line">    <span className="syntax-keyword">private</span> <span className="syntax-keyword">string</span> categorie_grammaticale;</div>
+              <div className="syntax-line">    <span className="syntax-keyword">private</span> <span className="syntax-keyword">string</span> definition;</div>
+              <div className="syntax-line">    <span className="syntax-keyword">private</span> <span className="syntax-keyword">char</span> genre;</div>
+              <div className="syntax-line">{`}`}</div>
+            </div>
+            <textarea 
+              className="code-editor-overlay"
+              defaultValue={`using System;
 
 public class Mot
 {
@@ -104,14 +130,32 @@ public class Mot
     private string definition;
     private char genre;
 }`}
-            spellCheck={false}
-          />
+              spellCheck={false}
+            />
+          </>
         );
       case 4:
         return (
-          <textarea 
-            className="code-editor"
-            defaultValue={`using System;
+          <>
+            <div className="syntax-highlighted-editor">
+              <div className="syntax-line"><span className="syntax-keyword">using</span> System;</div>
+              <div className="syntax-line"></div>
+              <div className="syntax-line"><span className="syntax-keyword">public</span> <span className="syntax-keyword">class</span> <span className="syntax-type">Mot</span></div>
+              <div className="syntax-line">{`{`}</div>
+              <div className="syntax-line">    <span className="syntax-keyword">private</span> <span className="syntax-keyword">string</span> lemot;</div>
+              <div className="syntax-line">    <span className="syntax-keyword">private</span> <span className="syntax-keyword">string</span> categorie_grammaticale;</div>
+              <div className="syntax-line">    <span className="syntax-keyword">private</span> <span className="syntax-keyword">string</span> definition;</div>
+              <div className="syntax-line">    <span className="syntax-keyword">private</span> <span className="syntax-keyword">char</span> genre;</div>
+              <div className="syntax-line"></div>
+              <div className="syntax-line">    <span className="syntax-keyword">public</span> <span className="syntax-type">Mot</span>(<span className="syntax-keyword">string</span> lemot, <span className="syntax-keyword">string</span> categorie_grammaticale, <span className="syntax-keyword">string</span> definition, <span className="syntax-keyword">char</span> genre = <span className="syntax-string">&apos;n&apos;</span>)</div>
+              <div className="syntax-line">    {`{`}</div>
+              <div className="syntax-line">        <span className="syntax-comment">{`// TO COMPLETE`}</span></div>
+              <div className="syntax-line">    {`}`}</div>
+              <div className="syntax-line">{`}`}</div>
+            </div>
+            <textarea 
+              className="code-editor-overlay"
+              defaultValue={`using System;
 
 public class Mot
 {
@@ -125,14 +169,48 @@ public class Mot
         // TO COMPLETE
     }
 }`}
-            spellCheck={false}
-          />
+              spellCheck={false}
+            />
+          </>
         );
       default:
         return (
-          <textarea 
-            className="code-editor"
-            defaultValue={`static int[] Matrice_Vecteur(int[,] mat)
+          <>
+            <div className="syntax-highlighted-editor">
+              <div className="syntax-line"><span className="syntax-keyword">static</span> <span className="syntax-keyword">int</span>[] <span className="syntax-type">Matrice_Vecteur</span>(<span className="syntax-keyword">int</span>[,] mat)</div>
+              <div className="syntax-line">{`{`}</div>
+              <div className="syntax-line">    <span className="syntax-keyword">int</span>[] vecteur;</div>
+              <div className="syntax-line"></div>
+              <div className="syntax-line">    <span className="syntax-keyword">if</span> (mat == <span className="syntax-keyword">null</span>)</div>
+              <div className="syntax-line">    {`{`}</div>
+              <div className="syntax-line">        vecteur = <span className="syntax-keyword">null</span>;</div>
+              <div className="syntax-line">    {`}`}</div>
+              <div className="syntax-line">    <span className="syntax-keyword">else</span> <span className="syntax-keyword">if</span> (mat.Length == <span className="syntax-number">0</span>)</div>
+              <div className="syntax-line">    {`{`}</div>
+              <div className="syntax-line">        vecteur = <span className="syntax-keyword">new</span> <span className="syntax-keyword">int</span>[<span className="syntax-number">0</span>];</div>
+              <div className="syntax-line">    {`}`}</div>
+              <div className="syntax-line">    <span className="syntax-keyword">else</span></div>
+              <div className="syntax-line">    {`{`}</div>
+              <div className="syntax-line">        <span className="syntax-keyword">int</span> rows = mat.GetLength(<span className="syntax-number">0</span>);</div>
+              <div className="syntax-line">        <span className="syntax-keyword">int</span> cols = mat.GetLength(<span className="syntax-number">1</span>);</div>
+              <div className="syntax-line">        vecteur = <span className="syntax-keyword">new</span> <span className="syntax-keyword">int</span>[rows <span className="syntax-operator">*</span> cols];</div>
+              <div className="syntax-line"></div>
+              <div className="syntax-line">        <span className="syntax-keyword">int</span> k = <span className="syntax-number">0</span>;</div>
+              <div className="syntax-line">        <span className="syntax-keyword">for</span> (<span className="syntax-keyword">int</span> i = <span className="syntax-number">0</span>; i <span className="syntax-operator">&lt;</span> rows; i<span className="syntax-operator">++</span>)</div>
+              <div className="syntax-line">        {`{`}</div>
+              <div className="syntax-line">            <span className="syntax-keyword">for</span> (<span className="syntax-keyword">int</span> j = <span className="syntax-number">0</span>; j <span className="syntax-operator">&lt;</span> cols; j<span className="syntax-operator">++</span>)</div>
+              <div className="syntax-line">            {`{`}</div>
+              <div className="syntax-line">                vecteur[k<span className="syntax-operator">++</span>] = mat[i, j];</div>
+              <div className="syntax-line">            {`}`}</div>
+              <div className="syntax-line">        {`}`}</div>
+              <div className="syntax-line">    {`}`}</div>
+              <div className="syntax-line"></div>
+              <div className="syntax-line">    <span className="syntax-keyword">return</span> vecteur;</div>
+              <div className="syntax-line">{`}`}</div>
+            </div>
+            <textarea 
+              className="code-editor-overlay"
+              defaultValue={`static int[] Matrice_Vecteur(int[,] mat)
 {
     int[] vecteur;
 
@@ -162,8 +240,9 @@ public class Mot
 
     return vecteur;
 }`}
-            spellCheck={false}
-          />
+              spellCheck={false}
+            />
+          </>
         );
     }
   };

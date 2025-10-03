@@ -305,27 +305,33 @@ body {
 
 /* Coloration syntaxique */
 .syntax-keyword {
-  color: #7c3aed; /* Violet pour les mots-clés */
+  color: #5b21b6; /* Violet plus foncé pour les mots-clés */
+  font-weight: 700;
 }
 
 .syntax-type {
-  color: #0ea5e9; /* Bleu pour les types */
+  color: #0284c7; /* Bleu plus foncé pour les types */
+  font-weight: 700;
 }
 
 .syntax-number {
-  color: #1e40af; /* Bleu foncé pour les nombres */
+  color: #1e3a8a; /* Bleu très foncé pour les nombres */
+  font-weight: 700;
 }
 
 .syntax-string {
-  color: #dc2626; /* Rouge pour les chaînes */
+  color: #b91c1c; /* Rouge plus foncé pour les chaînes */
+  font-weight: 700;
 }
 
 .syntax-comment {
-  color: #6b7280; /* Gris pour les commentaires */
+  color: #4b5563; /* Gris plus foncé pour les commentaires */
+  font-weight: 600;
 }
 
 .syntax-operator {
   color: #000000; /* Noir pour les opérateurs */
+  font-weight: 700;
 }
 
 /* Éditeur avec coloration syntaxique */
@@ -338,14 +344,15 @@ body {
   pointer-events: none;
   z-index: 1;
   font-family: 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
   white-space: pre;
   overflow: hidden;
 }
 
 .syntax-line {
-  min-height: 21px;
+  min-height: 22px;
   display: block;
 }
 
@@ -357,8 +364,9 @@ body {
   border: none;
   outline: none;
   font-family: 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
   color: transparent;
   resize: none;
   padding: 0;
