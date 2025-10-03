@@ -51,17 +51,18 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="flex items-center gap-2 text-white font-semibold">
+        <div className="flex flex-col items-end text-white font-semibold">
           <span>Adrien Lassus*</span>
-          <span>—</span>
-          <span>Termine dans : </span>
-          <span 
-            onClick={toggleTimer}
-            className="timer-display"
-            title={isActive ? "Cliquer pour mettre en pause" : "Cliquer pour démarrer"}
-          >
-            {formatTime(timeLeft)}
-          </span>
+          <div className="flex items-center gap-2">
+            <span>Termine dans : </span>
+            <span 
+              onClick={toggleTimer}
+              className="timer-display"
+              title={isActive ? "Cliquer pour mettre en pause" : "Cliquer pour démarrer"}
+            >
+              {formatTime(timeLeft)}
+            </span>
+          </div>
         </div>
       </header>
 
