@@ -129,20 +129,24 @@ export default function Ex4() {
               <div>11</div>
             </div>
           <div className="code-area">
-            <div className="line"><span className="keyword">using</span> System;</div>
-            <div className="line"></div>
-            <div className="line"><span className="keyword">public</span> <span className="keyword">class</span> Mot</div>
-            <div className="line">{`{`}</div>
-            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> lemot;</div>
-            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> categorie_grammaticale;</div>
-            <div className="line">    <span className="keyword">private</span> <span className="keyword">string</span> definition;</div>
-            <div className="line">    <span className="keyword">private</span> <span className="keyword">char</span> genre;</div>
-            <div className="line"></div>
-            <div className="line">    <span className="keyword">public</span> Mot(<span className="keyword">string</span> lemot, <span className="keyword">string</span> categorie_grammaticale, <span className="keyword">string</span> definition, <span className="keyword">char</span> genre = <span className="string">&apos;n&apos;</span>)</div>
-            <div className="line">    {`{`}</div>
-            <div className="line">        {`// TO COMPLETE`}</div>
-            <div className="line">    {`}`}</div>
-            <div className="line">{`}`}</div>
+            <textarea 
+              className="code-editor"
+              defaultValue={`using System;
+
+public class Mot
+{
+    private string lemot;
+    private string categorie_grammaticale;
+    private string definition;
+    private char genre;
+
+    public Mot(string lemot, string categorie_grammaticale, string definition, char genre = 'n')
+    {
+        // TO COMPLETE
+    }
+}`}
+              spellCheck={false}
+            />
           </div>
           </div>
 

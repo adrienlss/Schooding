@@ -128,16 +128,20 @@ export default function Ex5() {
               <div>10</div>
             </div>
           <div className="code-area">
-            <div className="line">{`// Vous êtes à la ligne 86`}</div>
-            <div className="line"></div>
-            <div className="line"><span className="keyword">public</span> <span className="keyword">partial</span> <span className="keyword">class</span> Texte</div>
-            <div className="line">{`{`}</div>
-            <div className="line"></div>
-            <div className="line">    <span className="keyword">public</span> Mot[] Recherche(<span className="keyword">char</span> genre)</div>
-            <div className="line">    {`{`}</div>
-            <div className="line">        {`//TO COMPLETE`}</div>
-            <div className="line">    {`}`}</div>
-            <div className="line">{`}`}</div>
+            <textarea 
+              className="code-editor"
+              defaultValue={`// Vous êtes à la ligne 86
+
+public partial class Texte
+{
+
+    public Mot[] Recherche(char genre)
+    {
+        //TO COMPLETE
+    }
+}`}
+              spellCheck={false}
+            />
           </div>
           </div>
 
