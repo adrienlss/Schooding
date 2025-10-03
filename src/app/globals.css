@@ -56,6 +56,20 @@ body {
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+/* Variations de couleur pour la barre verte */
+.header.color-violet {
+  background: #581870;
+}
+
+.header.color-brown {
+  background: #8B4513;
+}
+
+.header.color-green {
+  background: var(--green-700);
 }
 
 .tab {
