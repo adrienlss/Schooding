@@ -10,6 +10,7 @@ export default function Placeholder() {
   
   const [timeLeft, setTimeLeft] = useState(45 * 60); // 45 minutes en secondes
   const [isActive, setIsActive] = useState(false);
+  const [headerColor, setHeaderColor] = useState('green'); // green, violet, brown
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -34,7 +35,24 @@ export default function Placeholder() {
   };
 
   const toggleTimer = () => {
-    setIsActive(!isActive);
+    if (isActive) {
+      // Si le chrono est déjà lancé et on reclique, on enlève une minute
+      setTimeLeft(prev => Math.max(0, prev - 60));
+    } else {
+      // Sinon on démarre/arrête le chrono normalement
+      setIsActive(!isActive);
+    }
+  };
+
+  const cycleHeaderColor = () => {
+    setHeaderColor(prev => {
+      switch(prev) {
+        case 'green': return 'violet';
+        case 'violet': return 'brown';
+        case 'brown': return 'green';
+        default: return 'green';
+      }
+    });
   };
 
   const getEnonceContent = (exNumber: number) => {
@@ -171,14 +189,20 @@ public class Mot
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="header">
+      <header className={`header color-${headerColor}`}>
         <div className="flex items-center gap-2">
           <a href="/instructions" className="instructions-link">
-            Instructions et Aide
+            <span>Instructions</span>
+            <span>et Aide</span>
           </a>
           <div className="flex items-center gap-1">
             {Array.from({ length: 6 }, (_, i) => (
-              <a key={i} href={`/ex${i + 1}`} className={`tab ${i === currentEx ? 'active' : ''}`}>
+              <a 
+                key={i} 
+                href={`/ex${i + 1}`} 
+                className={`tab ${i === currentEx ? 'active' : ''}`}
+                onClick={i === 5 ? (e) => { e.preventDefault(); cycleHeaderColor(); } : undefined}
+              >
                 <div className="flex items-center gap-1">
                   <span>&lt;&gt;</span>
                   <span>Ex {i + 1}</span>

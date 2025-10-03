@@ -30,7 +30,13 @@ export default function Ex2Page() {
   };
 
   const toggleTimer = () => {
-    setIsActive(!isActive);
+    if (isActive) {
+      // Si le chrono est déjà lancé et on reclique, on enlève une minute
+      setTimeLeft(prev => Math.max(0, prev - 60));
+    } else {
+      // Sinon on démarre/arrête le chrono normalement
+      setIsActive(!isActive);
+    }
   };
 
   const cycleHeaderColor = () => {
@@ -50,7 +56,8 @@ export default function Ex2Page() {
       <header className={`header color-${headerColor}`}>
         <div className="flex items-center gap-2">
           <a href="/instructions" className="instructions-link">
-            Instructions et Aide
+            <span>Instructions</span>
+            <span>et Aide</span>
           </a>
           <div className="flex items-center gap-1">
             {Array.from({ length: 6 }, (_, i) => (
