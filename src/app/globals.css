@@ -40,7 +40,7 @@ body {
 /* Layout principal */
 #layout {
   display: grid;
-  grid-template-columns: 400px 1fr 350px;
+  grid-template-columns: 350px 1fr 350px;
   gap: 12px;
   padding: 12px 16px;
   min-width: 1280px;
@@ -70,6 +70,30 @@ body {
 
 .header.color-green {
   background: var(--green-700);
+}
+
+.header.color-blue {
+  background: #1e40af;
+}
+
+.header.color-red {
+  background: #dc2626;
+}
+
+.header.color-orange {
+  background: #ea580c;
+}
+
+.header.color-purple {
+  background: #7c3aed;
+}
+
+.header.color-pink {
+  background: #db2777;
+}
+
+.header.color-cyan {
+  background: #0891b2;
 }
 
 .tab {

@@ -44,7 +44,13 @@ export default function Ex2Page() {
       switch(prev) {
         case 'green': return 'violet';
         case 'violet': return 'brown';
-        case 'brown': return 'green';
+        case 'brown': return 'blue';
+        case 'blue': return 'red';
+        case 'red': return 'orange';
+        case 'orange': return 'purple';
+        case 'purple': return 'pink';
+        case 'pink': return 'cyan';
+        case 'cyan': return 'green';
         default: return 'green';
       }
     });
