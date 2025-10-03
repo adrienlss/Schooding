@@ -46,7 +46,7 @@ export default function Placeholder() {
             Instructions et Aide
           </a>
           <div className="flex items-center gap-3">
-            {Array.from({ length: 9 }, (_, i) => (
+            {Array.from({ length: 6 }, (_, i) => (
               <a key={i} href={`/ex${i + 1}`} className={`tab ${i === currentEx ? 'active' : ''}`}>
                 <span>&lt;&gt;</span>
                 <span>Ex {i + 1}</span>
