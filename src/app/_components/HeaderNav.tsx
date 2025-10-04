@@ -30,10 +30,9 @@ function ExerciseItem({ href, number }: { href: string; number: number }) {
   };
   
   return (
-    <Link
-      href={href}
+    <button
       onClick={handleClick}
-      className={`flex flex-col items-center px-3 py-2 text-white text-sm transition-colors relative ${
+      className={`flex flex-col items-center px-3 py-2 text-white text-sm transition-colors relative cursor-pointer ${
         active ? 'bg-[#1f3d07]' : 'hover:bg-[#1f3d07]'
       }`}
     >
@@ -46,7 +45,7 @@ function ExerciseItem({ href, number }: { href: string; number: number }) {
           </svg>
         </div>
       )}
-    </Link>
+    </button>
   );
 }
 

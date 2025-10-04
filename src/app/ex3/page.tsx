@@ -66,15 +66,15 @@ export default function Ex3() {
           </a>
           <div className="flex items-center gap-1">
             {Array.from({ length: Math.max(1, 6 - removedExercises) }, (_, i) => (
-              <a 
+              <button 
                 key={i} 
-                href={`/ex${i + 1}`} 
                 className={`tab ${i === 2 ? 'active' : ''}`}
-                onClick={(e) => {
+                onClick={() => {
                   if (i === 5 - removedExercises && removedExercises > 0) {
-                    e.preventDefault(); 
+                    // Si c'est le dernier exercice (ex6), changer la couleur
                     cycleHeaderColor(); 
                   } else {
+                    // Sinon, supprimer un exercice
                     removeExercise();
                   }
                 }}
@@ -84,7 +84,7 @@ export default function Ex3() {
                   <span>Ex {i + 1}</span>
                 </div>
                 <span className="tab-badge">1pts</span>
-              </a>
+              </button>
             ))}
           </div>
         </div>
