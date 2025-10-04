@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ExerciseProvider } from "./_contexts/ExerciseContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,9 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black`} style={{ margin: 0, padding: 0 }}>
-        {children}
+        <ExerciseProvider>
+          {children}
+        </ExerciseProvider>
       </body>
     </html>
   );

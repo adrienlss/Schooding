@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useExercise } from '../_contexts/ExerciseContext';
 
 function InstructionsItem({ href }: { href: string }) {
   const pathname = usePathname() || '';
@@ -22,9 +23,16 @@ function InstructionsItem({ href }: { href: string }) {
 function ExerciseItem({ href, number }: { href: string; number: number }) {
   const pathname = usePathname() || '';
   const active = pathname.startsWith(href);
+  const { removeExercise } = useExercise();
+  
+  const handleClick = () => {
+    removeExercise();
+  };
+  
   return (
     <Link
       href={href}
+      onClick={handleClick}
       className={`flex flex-col items-center px-3 py-2 text-white text-sm transition-colors relative ${
         active ? 'bg-[#1f3d07]' : 'hover:bg-[#1f3d07]'
       }`}
@@ -43,12 +51,16 @@ function ExerciseItem({ href, number }: { href: string; number: number }) {
 }
 
 export default function HeaderNav() {
+  const { removedExercises } = useExercise();
+  const totalExercises = 9;
+  const visibleExercises = Math.max(1, totalExercises - removedExercises);
+  
   return (
     <div className="bg-[#2a7e1f] border-t border-gray-600 border-b border-gray-300">
       <div className="flex items-stretch">
         <InstructionsItem href="/instructions" />
         <div className="flex">
-          {Array.from({ length: 9 }).map((_, i) => (
+          {Array.from({ length: visibleExercises }).map((_, i) => (
             <ExerciseItem key={i} href={`/ex${i + 1}`} number={i + 1} />
           ))}
         </div>

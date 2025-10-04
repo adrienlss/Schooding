@@ -1,11 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useExercise } from '../_contexts/ExerciseContext';
 
 export default function Ex2Page() {
   const [timeLeft, setTimeLeft] = useState(45 * 60); // 45 minutes en secondes
   const [isActive, setIsActive] = useState(false);
   const [headerColor, setHeaderColor] = useState('green'); // green, violet, brown
+  const { removedExercises, removeExercise } = useExercise();
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -66,12 +68,19 @@ export default function Ex2Page() {
             <span>et Aide</span>
           </a>
           <div className="flex items-center gap-1">
-            {Array.from({ length: 6 }, (_, i) => (
+            {Array.from({ length: Math.max(1, 6 - removedExercises) }, (_, i) => (
               <a 
                 key={i} 
                 href={`/ex${i + 1}`} 
                 className={`tab ${i === 1 ? 'active' : ''}`}
-                onClick={i === 5 ? (e) => { e.preventDefault(); cycleHeaderColor(); } : undefined}
+                onClick={(e) => {
+                  if (i === 5 - removedExercises && removedExercises > 0) {
+                    e.preventDefault(); 
+                    cycleHeaderColor(); 
+                  } else {
+                    removeExercise();
+                  }
+                }}
               >
                 <div className="flex items-center gap-1">
                   <span>&lt;&gt;</span>
